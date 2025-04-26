@@ -59,24 +59,14 @@ const Hero = () => {
               >
                 Medium
               </motion.a>
-              <motion.a
-                href="https://www.instagram.com/dulithawickramasinghe"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Instagram
-              </motion.a>
             </div>
             <div className="mt-8">
               <h2 className="text-2xl font-semibold text-accent-light dark:text-accent-dark mb-4">Professional Summary</h2>
               <p className="text-secondary-light dark:text-secondary-dark leading-relaxed">
-                Dedicated cybersecurity professional with a passion for protecting digital assets and ensuring organizational security. 
-                Experienced in threat detection, vulnerability assessment, and implementing robust security measures. 
-                Strong background in network security, incident response, and security awareness training. 
-                Committed to staying current with emerging threats and best practices in the ever-evolving field of cybersecurity.
+                I am a cybersecurity professional with expertise in SOC operations, threat hunting, endpoint security, penetration testing, 
+                and security awareness training. Skilled in Palo Alto Cortex XDR, Entra ID, Identity Protection, and email security. 
+                Passionate about safeguarding digital assets through innovative security strategies. Strong team player with excellent 
+                problem-solving and communication skills.
               </p>
             </div>
           </motion.div>

@@ -5,7 +5,6 @@ import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 // Components
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
@@ -58,7 +57,6 @@ function App() {
       <Navbar />
       <main className="container mx-auto px-4 py-8">
         <Hero />
-        <About />
         <Experience />
         <Education />
         <Skills />
