@@ -1,13 +1,78 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background-light dark:bg-background-dark text-primary-light dark:text-primary-dark transition-colors duration-200;
+  }
+
+  ::selection {
+    @apply bg-accent-light/20 dark:bg-accent-dark/20;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .section-title {
+    @apply text-3xl font-bold mb-6 text-accent-light dark:text-accent-dark;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-secondary-dark rounded-lg shadow-lg p-6 transition-all duration-200 hover:shadow-xl;
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded-md transition-all duration-200 font-medium;
+  }
+  
+  .btn-primary {
+    @apply bg-accent-light dark:bg-accent-dark text-white hover:opacity-90;
+  }
+  
+  .nav-link {
+    @apply text-primary-light dark:text-primary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-200;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary-light/10 dark:bg-secondary-dark/10;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent-light/50 dark:bg-accent-dark/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent-light dark:bg-accent-dark;
 }
