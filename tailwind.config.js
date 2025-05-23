@@ -8,21 +8,28 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          light: '#4B5563',
-          dark: '#1F2937',
+          light: '#212121', // New
+          dark: '#E0E0E0',   // New
         },
         secondary: {
-          light: '#6B7280',
-          dark: '#374151',
+          light: '#757575', // New
+          dark: '#BDBDBD',   // New
         },
         accent: {
-          light: '#3B82F6',
-          dark: '#2563EB',
+          light: '#1976D2', // New
+          dark: '#64B5F6',   // New
         },
         background: {
-          light: '#FFFFFF',
-          dark: '#111827',
+          light: '#F7FAFC', // New
+          dark: '#0A192F',   // New
         },
+        card: { // New card color object
+          light: '#FFFFFF',
+          dark: '#1E293B',
+        }
+      },
+      fontFamily: { // New font family
+        sans: ['Inter', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in',
@@ -42,4 +49,3 @@ module.exports = {
   },
   plugins: [],
 }
-
