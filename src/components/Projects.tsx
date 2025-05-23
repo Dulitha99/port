@@ -46,7 +46,7 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="card group hover:border-accent-light dark:hover:border-accent-dark border-2 border-transparent"
+                className="card group hover:border-accent-light dark:hover:border-accent-dark border-2 border-transparent p-4 sm:p-6" // Overriding padding
               >
                 <h3 className="text-xl font-bold text-accent-light dark:text-accent-dark mb-2">
                   {project.title}
@@ -62,7 +62,7 @@ const Projects = () => {
                     <motion.span
                       key={idx}
                       whileHover={{ scale: 1.05 }}
-                      className="px-3 py-1 bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full text-sm"
+                      className="px-3 py-1 bg-secondary-light/10 dark:bg-secondary-dark/10 text-primary-light dark:text-primary-dark rounded-full text-sm"
                     >
                       {tech}
                     </motion.span>

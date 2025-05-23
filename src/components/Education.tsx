@@ -43,7 +43,7 @@ const Education = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="card"
+                className="card p-4 sm:p-6" // Overriding padding from global .card style
               >
                 <div className="flex items-start space-x-4">
                   {edu.school.includes('KINGSWOOD') && (
@@ -51,7 +51,7 @@ const Education = () => {
                       <img 
                         src="/kingswood.png" 
                         alt="Kingswood College Logo" 
-                        className="w-16 h-16 object-contain"
+                        className="w-12 h-12 sm:w-16 sm:h-16 object-contain" // Adjusted logo size
                       />
                     </div>
                   )}
@@ -60,7 +60,7 @@ const Education = () => {
                       <img 
                         src="/sliit.png" 
                         alt="SLIIT Logo" 
-                        className="w-16 h-16 object-contain"
+                        className="w-12 h-12 sm:w-16 sm:h-16 object-contain" // Adjusted logo size
                       />
                     </div>
                   )}

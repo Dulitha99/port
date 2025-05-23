@@ -7,21 +7,22 @@ const Footer = () => {
 
   return (
     <footer className="mt-20 bg-gray-900 dark:bg-black text-white">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16"> {/* Adjusted padding */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Get in Touch Section */}
-          <div>
+          <div className="text-center md:text-left"> {/* Centered on mobile, left on md+ */}
             <h3 className="text-2xl font-bold text-white mb-8">Get in Touch</h3>
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
+                {/* Centering individual items on mobile if text is centered above */}
                 <MapPinIcon className="h-6 w-6 text-blue-400" />
                 <p className="text-gray-300">Colombo, Sri Lanka</p>
               </div>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4 justify-center md:justify-start">
                 <PhoneIcon className="h-6 w-6 text-blue-400" />
-                <p className="text-gray-300">+94 77 123 4567</p>
+                <p className="text-gray-300">+94753766162</p>
               </div>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4 justify-center md:justify-start">
                 <EnvelopeIcon className="h-6 w-6 text-blue-400" />
                 <p className="text-gray-300">dulithawickramasinghe@gmail.com</p>
               </div>
@@ -29,9 +30,9 @@ const Footer = () => {
           </div>
 
           {/* Connect With Me Section */}
-          <div>
+          <div className="text-center md:text-left"> {/* Centered on mobile, left on md+ */}
             <h3 className="text-2xl font-bold text-white mb-8">Connect With Me</h3>
-            <div className="flex space-x-6">
+            <div className="flex space-x-6 justify-center md:justify-start"> {/* Centered icons on mobile */}
               <motion.a
                 href="https://www.linkedin.com/in/dulitha-wickramasinghe-398971211/"
                 target="_blank"
