@@ -65,16 +65,19 @@ const Education = () => {
                              w-12 h-12 sm:w-16 sm:h-16 bg-card-light dark:bg-card-dark rounded-full 
                              border-4 border-accent-light dark:border-accent-dark 
                              flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 z-10" // Added z-10 and updated left positioning
+
                 >
                   <img 
                     src={edu.logo} 
                     alt={`${edu.institution} Logo`} 
+
                     className="h-6 w-6 sm:h-8 sm:h-8 object-contain rounded-sm"
                   />
                 </div>
 
                 {/* Content Card - Now needs its own left margin/padding to clear the node */}
                 <div className="ml-16 sm:ml-20 bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+
                   <h3 className="text-xl sm:text-2xl font-semibold text-accent-light dark:text-accent-dark mb-1">
                     {edu.degree}
                   </h3>
