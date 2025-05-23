@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import React, { useState, useEffect } from 'react'; // Added useState, useEffect
+import { motion, AnimatePresence } from 'framer-motion'; // Added motion, AnimatePresence
+import LoadingSpinner from './components/LoadingSpinner'; // Import the new spinner
 
 // Components
 import Navbar from './components/Navbar';
@@ -9,61 +9,63 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import BlogsPage from './components/BlogsPage';
+import ContactPage from './components/ContactPage';
 import Footer from './components/Footer';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500); // Simulate loading for 1.5 seconds
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-background-light dark:bg-background-dark transition-colors duration-300">
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="fixed top-4 right-4 p-2 rounded-full bg-accent-light/20 dark:bg-accent-dark/20 backdrop-blur-sm z-50 hover:bg-accent-light/30 dark:hover:bg-accent-dark/30 transition-colors"
-        aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-      >
-        <AnimatePresence mode="wait">
-          {darkMode ? (
-            <motion.div
-              key="sun"
-              initial={{ opacity: 0, rotate: -180 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: 180 }}
-              transition={{ duration: 0.3 }}
-            >
-              <SunIcon className="h-6 w-6 text-yellow-400" />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="moon"
-              initial={{ opacity: 0, rotate: 180 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: -180 }}
-              transition={{ duration: 0.3 }}
-            >
-              <MoonIcon className="h-6 w-6 text-gray-700" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </button>
+    <> {/* Use React Fragment to allow AnimatePresence and motion.div at the root level */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            key="loader"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-background-light dark:bg-background-dark"
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+          >
+            <LoadingSpinner />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      <Navbar />
-      <main className="container mx-auto px-4 py-8">
-        <Hero />
-        <Experience />
-        <Education />
-        <Skills />
-        <Projects />
-      </main>
-      <Footer />
-    </div>
+      {/* Main application content with fade-in animation */}
+      {/* We only want to mount the main app content when isLoading is false to prevent premature rendering */}
+      {!isLoading && (
+        <motion.div
+          key="app-content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }} // Slight delay after loader potentially exits
+          // The existing classes from the original root div are applied here
+          className="min-h-screen bg-background-light dark:bg-background-dark transition-colors duration-300"
+        >
+          <Navbar />
+          <main className="bg-background-light dark:bg-background-dark">
+            <Hero />
+            <Experience />
+            <Education />
+            <Skills />
+            <Projects />
+            <div id="blogs" className="bg-background-light dark:bg-background-dark">
+              <BlogsPage />
+            </div>
+            <div id="contact" className="bg-background-light dark:bg-background-dark">
+              <ContactPage />
+            </div>
+          </main>
+          <Footer />
+        </motion.div>
+      )}
+    </>
   );
 }
 

@@ -5,40 +5,50 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Apply Inter font if not globally set by Tailwind config */
+    font-family: 'Inter', sans-serif;
   }
 
   body {
-    @apply bg-background-light dark:bg-background-dark text-primary-light dark:text-primary-dark transition-colors duration-200;
+    @apply bg-background-light dark:bg-background-dark text-primary-light dark:text-primary-dark transition-colors duration-300 ease-in-out;
   }
 
   ::selection {
-    @apply bg-accent-light/20 dark:bg-accent-dark/20;
+    @apply bg-accent-light/30 dark:bg-accent-dark/30; /* Slightly increased opacity for selection */
+  }
+
+  /* Optional: Global heading styles if needed, assuming font-sans from Tailwind config handles Inter */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans; /* Ensures Inter is applied if specified as default sans font */
   }
 }
 
 @layer components {
   .section-title {
-    @apply text-3xl font-bold mb-6 text-accent-light dark:text-accent-dark;
+    @apply text-3xl font-bold mb-8 text-accent-light dark:text-accent-dark; /* Updated margin and colors */
   }
   
   .card {
-    @apply bg-white dark:bg-secondary-dark rounded-lg shadow-lg p-6 transition-all duration-200 hover:shadow-xl;
+    /* Using new card colors from tailwind.config.js */
+    @apply bg-card-light dark:bg-card-dark rounded-lg shadow-lg p-6 transition-all duration-300 ease-in-out hover:shadow-xl; 
   }
   
   .btn {
-    @apply px-4 py-2 rounded-md transition-all duration-200 font-medium;
+    @apply px-4 py-2 rounded-md transition-all duration-300 ease-in-out font-medium; /* Updated duration and easing */
   }
   
   .btn-primary {
-    @apply bg-accent-light dark:bg-accent-dark text-white hover:opacity-90;
+    /* Using new accent colors, text-white should still provide good contrast */
+    @apply bg-accent-light dark:bg-accent-dark text-white hover:opacity-90; 
   }
   
   .nav-link {
-    @apply text-primary-light dark:text-primary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-200;
+    /* Using new primary and accent colors */
+    @apply text-primary-light dark:text-primary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-200 ease-in-out;
   }
 }
 
-/* Custom Animations */
+/* Custom Animations (keeping existing) */
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -55,24 +65,27 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Smooth Scrolling */
+/* Smooth Scrolling (keeping existing) */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar (updated to use new color palette) */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-secondary-light/10 dark:bg-secondary-dark/10;
+  /* Using a very subtle version of the secondary color for the track */
+  @apply bg-secondary-light/10 dark:bg-secondary-dark/5; 
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-accent-light/50 dark:bg-accent-dark/50 rounded-full;
+  /* Using accent color for the thumb */
+  @apply bg-accent-light/40 dark:bg-accent-dark/40 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-accent-light dark:bg-accent-dark;
+  /* Darken/lighten accent color on hover */
+  @apply bg-accent-light/60 dark:bg-accent-dark/60;
 }
