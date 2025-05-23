@@ -70,14 +70,14 @@ const nonTechnicalSkillsData = [ // Added ids
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-background-light dark:bg-background-dark"> {/* Added bg color */}
+    <section id="skills" className="py-20 bg-background-light dark:bg-background-dark">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }} // Standardized duration
-          viewport={{ once: true, amount: 0.3 }} // Standardized viewport
-          className="text-center mb-16" // Centered title, more margin
+          variants={sectionIntroVariants} // Applied variants
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center mb-16"
         >
           <div className="inline-flex items-center justify-center mb-4">
             <WrenchScrewdriverIcon className="h-10 w-10 text-accent-light dark:text-accent-dark mr-3" /> {/* Larger icon */}
