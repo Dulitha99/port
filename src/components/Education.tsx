@@ -27,7 +27,7 @@ const educationData = [ // Renamed and added id/logo
 
 const Education = () => {
   return (
-    <section id="education" className="py-20 bg-background-light dark:bg-background-dark"> {/* Added bg colors */}
+    <section id="education" className="py-16 bg-background-light dark:bg-background-dark"> {/* Adjusted padding */}
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,31 +50,34 @@ const Education = () => {
           <div className="absolute left-6 sm:left-8 top-0 h-full w-0.5 bg-accent-light/30 dark:bg-accent-dark/30 rounded-full"></div>
 
             {educationData.map((edu, index) => ( 
+            {educationData.map((edu, index) => ( 
               <motion.div
-
                 key={edu.id}
-                className="relative pl-16 sm:pl-20 mb-12 group" // Padding for node, mb for spacing
-                initial={{ opacity: 0, x: -50 }} // Initial animation state
-                whileInView={{ opacity: 1, x: 0 }} // Animation when in view
+                className="relative mb-12 group" // Removed pl-16/sm:pl-20 from here
+                initial={{ opacity: 0, x: -50 }} 
+                whileInView={{ opacity: 1, x: 0 }} 
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                {/* Timeline Node (Circle with Logo) */}
+                {/* Timeline Node (Circle with Logo) - Positioned relative to the line */}
                 <div 
-                  className="absolute left-0 top-1 transform -translate-x-1/2 
+                  className="absolute left-6 sm:left-8 top-1 transform -translate-x-1/2 
                              w-12 h-12 sm:w-16 sm:h-16 bg-card-light dark:bg-card-dark rounded-full 
                              border-4 border-accent-light dark:border-accent-dark 
-                             flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300"
+                             flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 z-10" // Added z-10 and updated left positioning
+
                 >
                   <img 
                     src={edu.logo} 
                     alt={`${edu.institution} Logo`} 
-                    className="h-6 w-6 sm:h-8 sm:h-8 object-contain rounded-sm" // Logo size inside the circle
+
+                    className="h-6 w-6 sm:h-8 sm:h-8 object-contain rounded-sm"
                   />
                 </div>
 
-                {/* Content Card */}
-                <div className="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                {/* Content Card - Now needs its own left margin/padding to clear the node */}
+                <div className="ml-16 sm:ml-20 bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+
                   <h3 className="text-xl sm:text-2xl font-semibold text-accent-light dark:text-accent-dark mb-1">
                     {edu.degree}
                   </h3>

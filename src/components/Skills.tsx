@@ -70,7 +70,7 @@ const nonTechnicalSkillsData = [ // Added ids
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-background-light dark:bg-background-dark">
+    <section id="skills" className="py-16 bg-background-light dark:bg-background-dark"> {/* Adjusted padding */}
       <div className="container mx-auto px-4">
         <motion.div
           variants={sectionIntroVariants} // Applied variants

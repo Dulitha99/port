@@ -45,7 +45,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-primary-light dark:text-primary-dark tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary-light dark:text-primary-dark tracking-normal" // Adjusted font size and tracking
             >
               DULITHA WICKRAMASINGHE
             </motion.h1>
