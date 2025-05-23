@@ -108,6 +108,7 @@ const Experience = () => {
                       <li key={idx} className="leading-relaxed">{resp}</li>
                     ))}
                   </ul>
+
                 </div>
               </motion.div>
             ))}

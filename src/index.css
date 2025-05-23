@@ -29,8 +29,6 @@
   }
   
   .card {
-    /* Using new card colors from tailwind.config.js */
-    @apply bg-card-light dark:bg-card-dark rounded-lg shadow-lg p-6 transition-all duration-300 ease-in-out hover:shadow-xl; 
   }
   
   .btn {

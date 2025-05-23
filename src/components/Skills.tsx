@@ -87,7 +87,6 @@ const Skills = () => {
             A showcase of my technical abilities and professional strengths.
           </p>
         </motion.div>
-
         <div className="grid md:grid-cols-2 gap-10">
           {/* Technical Skills Card */}
           <motion.div
@@ -136,7 +135,6 @@ const Skills = () => {
               ))}
             </div>
           </motion.div>
-
           {/* Non-Technical Skills Card */}
           <motion.div
             custom={1} // For cardVariants stagger (right card, x starts from 50)

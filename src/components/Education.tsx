@@ -51,6 +51,7 @@ const Education = () => {
 
             {educationData.map((edu, index) => ( 
               <motion.div
+
                 key={edu.id}
                 className="relative pl-16 sm:pl-20 mb-12 group" // Padding for node, mb for spacing
                 initial={{ opacity: 0, x: -50 }} // Initial animation state
