@@ -8,21 +8,28 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          light: '#2D3748', // Updated
-          dark: '#E2E8F0',    // Updated
+          light: '#212121', // New
+          dark: '#E0E0E0',   // New
         },
         secondary: {
-          light: '#718096', // Updated
-          dark: '#A0AEC0',   // Updated
+          light: '#757575', // New
+          dark: '#BDBDBD',   // New
         },
         accent: {
-          light: '#2B6CB0', // Updated
-          dark: '#3182CE',   // Updated
+          light: '#1976D2', // New
+          dark: '#64B5F6',   // New
         },
         background: {
-          light: '#FFFFFF', // Remains the same
-          dark: '#1A202C',   // Updated
+          light: '#F7FAFC', // New
+          dark: '#0A192F',   // New
         },
+        card: { // New card color object
+          light: '#FFFFFF',
+          dark: '#1E293B',
+        }
+      },
+      fontFamily: { // New font family
+        sans: ['Inter', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in',

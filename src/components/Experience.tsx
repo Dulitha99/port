@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BriefcaseIcon } from '@heroicons/react/24/outline';
+import { BriefcaseIcon } from '@heroicons/react/24/outline'; // Keeping the main section icon
 
-const experiences = [
+const experiencesData = [ // Renamed and added id/logo
   {
-    title: 'EXECUTIVE SECURITY OPERATIONS CENTER ANALYST',
+    id: 1,
+    role: 'EXECUTIVE SECURITY OPERATIONS CENTER ANALYST', // Changed title to role
     company: 'MIDAS STRATEGIC IT SRI LANKA',
+    logo: '/midas.png', 
     period: 'JAN 17, 2025 – PRESENT',
     responsibilities: [
       'Monitor and analyze security incidents using Palo Alto Cortex XDR.',
@@ -16,8 +18,10 @@ const experiences = [
     ],
   },
   {
-    title: 'ASSOCIATE CYBER SECURITY ANALYST',
+    id: 2,
+    role: 'ASSOCIATE CYBER SECURITY ANALYST', // Changed title to role
     company: 'IVEDHA INC TORONTO ONTARIO CANADA',
+    logo: '/ivedha.png',
     period: 'SEP 02, 2024 – DEC 31, 2024',
     responsibilities: [
       'Conducted penetration testing and Vulnerability Assessments.',
@@ -27,8 +31,10 @@ const experiences = [
     ],
   },
   {
-    title: 'INTERN CYBER SECURITY',
+    id: 3,
+    role: 'INTERN CYBER SECURITY', // Changed title to role
     company: 'IVEDHA INC, TORONTO ONTARIO CANADA',
+    logo: '/ivedha.png',
     period: 'FEB 19, 2024 – SEP 02, 2024',
     responsibilities: [
       'Assisted in web application vulnerability assessments.',
@@ -41,70 +47,73 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20">
+    <section id="experience" className="py-20 bg-background-light dark:bg-background-dark"> {/* Added bg colors */}
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.6 }} // Slightly longer duration
+          viewport={{ once: true, amount: 0.3 }} // Trigger when 30% visible
+          className="text-center mb-16" // Centered title area, more bottom margin
         >
-          <div className="flex items-center space-x-2 mb-6">
-            <BriefcaseIcon className="h-8 w-8 text-accent-light dark:text-accent-dark" />
-            <h2 className="section-title">Work Experience</h2>
+          <div className="inline-flex items-center justify-center mb-4"> {/* Wrapper for icon and title */}
+            <BriefcaseIcon className="h-10 w-10 text-accent-light dark:text-accent-dark mr-3" /> {/* Larger icon, margin right */}
+            <h2 className="text-4xl font-bold text-primary-light dark:text-primary-dark">Work Experience</h2> {/* Updated h2 style */}
           </div>
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
+          <p className="text-lg text-secondary-light dark:text-secondary-dark max-w-2xl mx-auto"> {/* Subtitle */}
+            My professional journey and key contributions in the field of cybersecurity.
+          </p>
+        </motion.div>
+
+        <div className="relative max-w-3xl mx-auto"> {/* Timeline container */}
+          {/* The vertical timeline bar */}
+          <div className="absolute left-6 sm:left-8 top-0 h-full w-0.5 bg-accent-light/30 dark:bg-accent-dark/30 rounded-full"></div>
+
+            {experiencesData.map((exp, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="card p-4 sm:p-6" // Overriding padding from global .card style
+                key={exp.id}
+                className="relative pl-16 sm:pl-20 mb-12 group" // Padding for node, mb for spacing
+                initial={{ opacity: 0, x: -50 }} // Initial animation state (will be refined)
+                whileInView={{ opacity: 1, x: 0 }} // Animation when in view
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
               >
-                <div className="flex items-start space-x-4">
-                  {exp.company.includes('IVEDHA') && (
-                    <div className="flex-shrink-0">
-                      <img 
-                        src="/ivedha.png" 
-                        alt="IVEDHA INC Logo" 
-                        className="w-12 h-12 sm:w-16 sm:h-16 object-contain" // Adjusted logo size
-                      />
-                    </div>
-                  )}
-                  {exp.company.includes('MIDAS') && (
-                    <div className="flex-shrink-0">
-                      <img 
-                        src="/midas.png" 
-                        alt="MIDAS STRATEGIC IT Logo" 
-                        className="w-12 h-12 sm:w-16 sm:h-16 object-contain" // Adjusted logo size
-                      />
-                    </div>
-                  )}
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-accent-light dark:text-accent-dark">
-                      {exp.title}
-                    </h3>
-                    <p className="text-lg text-secondary-light dark:text-secondary-dark">
-                      {exp.company}
-                    </p>
-                    <p className="text-sm text-secondary-light dark:text-secondary-dark mb-4">
-                      {exp.period}
-                    </p>
-                    <ul className="list-disc list-inside space-y-2">
-                      {exp.responsibilities.map((resp, idx) => (
-                        <li key={idx} className="text-primary-light dark:text-primary-dark">
-                          {resp}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                {/* Timeline Node (Circle with Logo) */}
+                <div 
+                  className="absolute left-0 top-1 transform -translate-x-1/2 
+                             w-12 h-12 sm:w-16 sm:h-16 bg-card-light dark:bg-card-dark rounded-full 
+                             border-4 border-accent-light dark:border-accent-dark 
+                             flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300"
+                >
+                  <img 
+                    src={exp.logo} 
+                    alt={`${exp.company} Logo`} 
+                    className="h-6 w-6 sm:h-8 sm:h-8 object-contain rounded-sm" // Logo size inside the circle
+                  />
+                </div>
+
+                {/* Content Card */}
+                <div className="bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-accent-light dark:text-accent-dark mb-1">
+                    {exp.role}
+                  </h3>
+                  <p className="text-md sm:text-lg font-medium text-primary-light dark:text-primary-dark mb-1">
+                    {exp.company}
+                  </p>
+                  <p className="text-xs sm:text-sm text-secondary-light dark:text-secondary-dark mb-4">
+                    {exp.period}
+                  </p>
+                  <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-primary-light dark:text-primary-dark text-opacity-90 dark:text-opacity-90">
+                    {exp.responsibilities.map((resp, idx) => (
+                      <li key={idx} className="leading-relaxed">{resp}</li>
+                    ))}
+                  </ul>
+
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        {/* </motion.div> // This motion.div was for the whole section, items will animate individually */}
       </div>
     </section>
   );
