@@ -8,20 +8,20 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          light: '#4B5563',
-          dark: '#1F2937',
+          light: '#2D3748', // Updated
+          dark: '#E2E8F0',    // Updated
         },
         secondary: {
-          light: '#6B7280',
-          dark: '#374151',
+          light: '#718096', // Updated
+          dark: '#A0AEC0',   // Updated
         },
         accent: {
-          light: '#3B82F6',
-          dark: '#2563EB',
+          light: '#2B6CB0', // Updated
+          dark: '#3182CE',   // Updated
         },
         background: {
-          light: '#FFFFFF',
-          dark: '#111827',
+          light: '#FFFFFF', // Remains the same
+          dark: '#1A202C',   // Updated
         },
       },
       animation: {
@@ -42,4 +42,3 @@ module.exports = {
   },
   plugins: [],
 }
-

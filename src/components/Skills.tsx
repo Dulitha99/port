@@ -76,7 +76,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="card"
+              className="card p-4 sm:p-6" // Overriding padding
             >
               <h3 className="text-xl font-bold text-accent-light dark:text-accent-dark mb-4">
                 Technical Skills
@@ -92,7 +92,7 @@ const Skills = () => {
                         <motion.span
                           key={idx}
                           whileHover={{ scale: 1.05 }}
-                          className="px-3 py-1 bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full text-sm"
+                          className="px-3 py-1 bg-secondary-light/10 dark:bg-secondary-dark/10 text-primary-light dark:text-primary-dark rounded-full text-sm"
                         >
                           {skill}
                         </motion.span>
@@ -109,7 +109,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="card"
+              className="card p-4 sm:p-6" // Overriding padding
             >
               <h3 className="text-xl font-bold text-accent-light dark:text-accent-dark mb-4">
                 Non-Technical Skills
@@ -119,7 +119,7 @@ const Skills = () => {
                   <motion.span
                     key={index}
                     whileHover={{ scale: 1.05 }}
-                    className="px-3 py-1 bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full text-sm"
+                    className="px-3 py-1 bg-secondary-light/10 dark:bg-secondary-dark/10 text-primary-light dark:text-primary-dark rounded-full text-sm"
                   >
                     {skill}
                   </motion.span>

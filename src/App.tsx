@@ -9,6 +9,8 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import BlogsPage from './components/BlogsPage';
+import ContactPage from './components/ContactPage';
 import Footer from './components/Footer';
 
 function App() {
@@ -61,6 +63,12 @@ function App() {
         <Education />
         <Skills />
         <Projects />
+        <div id="blogs">
+          <BlogsPage />
+        </div>
+        <div id="contact">
+          <ContactPage />
+        </div>
       </main>
       <Footer />
     </div>
