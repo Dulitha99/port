@@ -36,15 +36,12 @@ const articlesData = [
     slug: generateSlug('Onboarding Microsoft Sentinel'),
   }
 ];
-
 const BlogsPage: React.FC = () => {
   return (
     <div id="blogs" className="container mx-auto px-4 py-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }} // Consistent with previous animations
-        viewport={{ once: true, amount: 0.3 }} // Consistent viewport
       >
         <h1 className="text-4xl sm:text-5xl font-bold text-center mb-4 text-primary-light dark:text-primary-dark">
           Insights & Articles
