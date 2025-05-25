@@ -65,7 +65,7 @@ const Education = () => {
                              w-12 h-12 sm:w-16 sm:h-16 bg-card-light dark:bg-card-dark rounded-full 
                              border-4 border-accent-light dark:border-accent-dark 
                              flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 z-10" // Added z-10 and updated left positioning
-                >
+>
                   <img 
                     src={edu.logo} 
                     alt={`${edu.institution} Logo`} 
