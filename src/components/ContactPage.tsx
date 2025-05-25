@@ -60,7 +60,6 @@ const ContactPage: React.FC = () => {
         setErrors(prev => ({ ...prev, message: 'Message is required.' }));
     }
   };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => { // Removed async as native submission handles it
     if (!validateForm()) {
       e.preventDefault(); // Prevent submission ONLY if validation fails
