@@ -1,30 +1,77 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Animation variants for text elements
+const textVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({ // Custom property 'i' for stagger delay
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2, // Stagger by 0.2s for each item
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  })
+};
+
+// Animation for the image
+const imageVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: 0.5, // Delay slightly after text
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center pt-16 md:pt-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="space-y-6 text-center md:text-left"
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-accent-light dark:text-accent-dark">
+    <section 
+      id="home" 
+      className="min-h-screen flex items-center pt-20 md:pt-24 bg-gradient-to-br from-background-light via-blue-50 to-indigo-100 dark:from-background-dark dark:via-gray-900 dark:to-accent-dark/5" // Updated background, pt
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16"> 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center"> {/* Changed to md:grid-cols-3 */}
+          
+          {/* Text Content Column - now takes 2/3 of the space on md+ screens */}
+          <div className="space-y-6 text-center md:text-left md:col-span-2"> {/* Added md:col-span-2 */}
+            <motion.h1 
+              custom={0} // Stagger index
+              initial="hidden"
+              animate="visible"
+              variants={textVariants}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary-light dark:text-primary-dark tracking-normal" // Adjusted font size and tracking
+            >
               DULITHA WICKRAMASINGHE
-            </h1>
-            <p className="text-lg sm:text-xl text-secondary-light dark:text-secondary-dark">
+            </motion.h1>
+            <motion.p 
+              custom={1} // Stagger index
+              initial="hidden"
+              animate="visible"
+              variants={textVariants}
+              className="text-2xl sm:text-3xl font-medium text-accent-light dark:text-accent-dark mb-6"
+            >
               Cybersecurity Professional
-            </p>
-            <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4">
+            </motion.p>
+            {/* Social Links / CTAs */}
+            <motion.div 
+              custom={3} // Stagger index (summary is 2)
+              initial="hidden"
+              animate="visible"
+              variants={textVariants}
+              className="flex flex-wrap justify-center md:justify-start gap-4 pt-4"
+            >
               <motion.a
                 href="https://www.linkedin.com/in/dulitha-wickramasinghe-398971211/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary text-sm sm:text-base px-4 py-2"
-                whileHover={{ scale: 1.05 }}
+                className="btn btn-primary text-base px-6 py-3" 
+                whileHover={{ scale: 1.05, y: -2 }} 
                 whileTap={{ scale: 0.95 }}
               >
                 LinkedIn
@@ -33,69 +80,50 @@ const Hero = () => {
                 href="https://github.com/Dulitha99"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary text-sm sm:text-base px-4 py-2"
-                whileHover={{ scale: 1.05 }}
+                className="btn btn-primary text-base px-6 py-3" 
+                whileHover={{ scale: 1.05, y: -2 }} 
                 whileTap={{ scale: 0.95 }}
               >
                 GitHub
               </motion.a>
-              <motion.a
-                href="https://tryhackme.com/p/dulithawickramas"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary text-sm sm:text-base px-4 py-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                TryHackMe
-              </motion.a>
-              <motion.a
-                href="https://medium.com/@dulithawickramasinghe"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary text-sm sm:text-base px-4 py-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Medium
-              </motion.a>
-            </div>
-            <div className="mt-8 max-w-2xl mx-auto md:mx-0">
-              <h2 className="text-xl sm:text-2xl font-semibold text-accent-light dark:text-accent-dark mb-4">Professional Summary</h2>
-              <p className="text-base sm:text-lg text-secondary-light dark:text-secondary-dark leading-relaxed">
-                I am a cybersecurity professional with expertise in SOC operations, threat hunting, endpoint security, penetration testing, 
-                and security awareness training. Skilled in Palo Alto Cortex XDR, Entra ID, Identity Protection, and email security. 
-                Passionate about safeguarding digital assets through innovative security strategies. Strong team player with excellent 
-                problem-solving and communication skills.
-              </p>
-            </div>
-          </motion.div>
+            </motion.div>
+            
+            <motion.p 
+              custom={2} // Stagger index
+              initial="hidden"
+              animate="visible"
+              variants={textVariants}
+              className="pt-6 max-w-xl mx-auto md:mx-0 text-lg text-secondary-light dark:text-secondary-dark leading-relaxed"
+            >
+              I am a cybersecurity professional with expertise in SOC operations, threat hunting, endpoint security, penetration testing, 
+              and security awareness training. Skilled in Palo Alto Cortex XDR, Entra ID, Identity Protection, and email security. 
+              Passionate about safeguarding digital assets through innovative security strategies. Strong team player with excellent 
+              problem-solving and communication skills.
+            </motion.p>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative mx-auto w-64 sm:w-72 md:w-80 lg:w-96"
+          {/* Image Column */}
+          <motion.div 
+            variants={imageVariants}
+            initial="hidden"
+            animate="visible"
+            // On mobile, mx-auto centers it. On desktop, it's in its own column.
+            // md:justify-self-end would push it to the right of its column.
+            // md:mx-0 to override mobile mx-auto if needed, but grid column handles it.
+            className="relative mx-auto w-72 sm:w-80 md:w-auto md:max-w-sm lg:max-w-md md:justify-self-center lg:justify-self-end" // Adjusted desktop width and alignment
           >
-            <div className="aspect-square rounded-full overflow-hidden">
+            <div 
+              className="aspect-square rounded-full overflow-hidden shadow-2xl 
+                         ring-4 ring-card-light dark:ring-gray-700 
+                         ring-offset-4 ring-offset-background-light dark:ring-offset-background-dark"
+            >
               <img
-                src="/dulitha.JPEG.jpg"
+                src="/dulitha.JPEG.jpg" 
                 alt="Dulitha Wickramasinghe"
                 className="w-full h-full object-cover"
               />
             </div>
-            <motion.div
-              className="absolute -inset-4 border-2 border-accent-light dark:border-accent-dark rounded-full"
-              animate={{
-                scale: [1, 1.1, 1],
-                rotate: [0, 5, -5, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
+            {/* Old animated border removed */}
           </motion.div>
         </div>
       </div>
