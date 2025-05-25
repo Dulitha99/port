@@ -16,7 +16,7 @@ const articlesData = [
     title: 'Nmap Basics',
     articleUrl: 'https://medium.com/@dulithawickramasinghe/nmap-basics-90b024940014',
     summary: "An insightful article discussing Nmap Basics. Click 'Read More' to delve into the details on Medium.",
-    imageUrl: '', // No image, placeholder will be used
+    imageUrl: '/nmap.jfif', // Updated image URL
     slug: generateSlug('Nmap Basics'),
   },
   {
@@ -24,7 +24,7 @@ const articlesData = [
     title: 'Blockchain Technology',
     articleUrl: 'https://medium.com/@dulithawickramasinghe/blockchain-technology-a34588b30d91',
     summary: "An insightful article discussing Blockchain Technology. Click 'Read More' to delve into the details on Medium.",
-    imageUrl: '',
+    imageUrl: '/blockchain.jfif', // Updated image URL
     slug: generateSlug('Blockchain Technology'),
   },
   {
@@ -32,16 +32,19 @@ const articlesData = [
     title: 'Onboarding Microsoft Sentinel',
     articleUrl: 'https://medium.com/@dulithawickramasinghe/onboarding-microsoft-sentinel-fe91602dbd4a',
     summary: "An insightful article discussing Onboarding Microsoft Sentinel. Click 'Read More' to delve into the details on Medium.",
-    imageUrl: '',
+    imageUrl: '/Sentinel.jpg', // Updated image URL
     slug: generateSlug('Onboarding Microsoft Sentinel'),
   }
 ];
+
 const BlogsPage: React.FC = () => {
   return (
     <div id="blogs" className="container mx-auto px-4 py-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }} // Consistent with previous animations
+        viewport={{ once: true, amount: 0.3 }} // Consistent viewport
       >
         <h1 className="text-4xl sm:text-5xl font-bold text-center mb-4 text-primary-light dark:text-primary-dark">
           Insights & Articles
@@ -61,9 +64,16 @@ const BlogsPage: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }} // Consistent with project cards
             className="bg-card-light dark:bg-card-dark rounded-xl shadow-lg overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-2xl" // Using card styles
           >
-            <div className="w-full h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
-              {/* Image Placeholder - imageUrl is empty, so this will show */}
-              <span className="text-secondary-light dark:text-secondary-dark">Article Preview</span>
+            <div className="w-full h-48 bg-gray-300 dark:bg-gray-700 flex items-center justify-center overflow-hidden"> {/* Ensure bg for placeholder visibility */}
+              {article.imageUrl ? (
+                <img 
+                  src={article.imageUrl} 
+                  alt={article.title} 
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              ) : (
+                <span className="text-secondary-light dark:text-secondary-dark">Article Preview</span>
+              )}
             </div>
 
             <div className="p-6 flex flex-col flex-grow">

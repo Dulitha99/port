@@ -60,20 +60,19 @@ const ContactPage: React.FC = () => {
         setErrors(prev => ({ ...prev, message: 'Message is required.' }));
     }
   };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => { // Removed async as native submission handles it
     if (!validateForm()) {
+      e.preventDefault(); // Prevent submission ONLY if validation fails
       setFormStatus('error');
       return;
     }
+    // If validation passes, set status and allow native form submission
     setFormStatus('submitting');
-    // Simulate API call
-    console.log('Form data submitted:', formData);
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
-    setFormStatus('success');
-    setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
-    // setErrors({}); // Clear errors
+    // Native form submission will occur now because e.preventDefault() was not called.
+    // Web3Forms will handle the redirect to a success/error page.
+    // So, explicit success message and form clearing here are removed.
+    // Consider clearing form data after a short delay if Web3Forms submission is quick and doesn't redirect,
+    // but typically for non-AJAX, this isn't needed.
   };
 
   return (
@@ -152,7 +151,9 @@ const ContactPage: React.FC = () => {
           <h2 className="text-2xl sm:text-3xl font-semibold text-primary-light dark:text-primary-dark mb-6">
             Send Me a Message
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} className="space-y-5">
+            <input type="hidden" name="access_key" value="387385f0-622c-4391-862d-696b4c4483b0" />
+            <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-primary-light dark:text-primary-dark mb-1">Full Name</label>
               <input 
