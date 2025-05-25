@@ -7,7 +7,7 @@ const projectsData = [ // Updated data structure
     id: 'proj1',
     title: 'Automated Vulnerability Scanning Solution',
     description: 'Development of automation tools for vulnerability scanning using Python and Bash Scripting. Associated with Ivedha Inc.',
-    imageUrl: '', // Placeholder for now
+    imageUrl: '/automatedvulnerabilityscanning.jpg', 
     technologies: ['Python', 'Bash', 'Security Automation', 'Vulnerability Assessment'],
     liveUrl: '#', 
     repoUrl: '#', 
@@ -16,7 +16,7 @@ const projectsData = [ // Updated data structure
     id: 'proj2',
     title: 'Security Awareness & Phishing Simulations',
     description: 'Conducted security awareness training and simulated phishing attacks for multiple clients using the KnowBe4 platform to improve organizational security posture. Associated with Ivedha Inc.',
-    imageUrl: '',
+    imageUrl: '/Phishingawareness.jpg',
     technologies: ['KnowBe4', 'Security Training', 'Phishing Simulation', 'Cyber Hygiene'], // Corrected typo
     liveUrl: '#',
     repoUrl: '#',
@@ -25,7 +25,7 @@ const projectsData = [ // Updated data structure
     id: 'proj3',
     title: 'Vulnerability Assessments & Penetration Testing',
     description: 'Performed in-depth vulnerability assessments and penetration testing for enterprise clients, identifying security weaknesses and recommending mitigation strategies. Associated with Ivedha Inc.',
-    imageUrl: '',
+    imageUrl: '/penetrationtesting.jfif',
     technologies: ['Penetration Testing', 'Vulnerability Assessment', 'Nessus', 'Burp Suite'],
     liveUrl: '#',
     repoUrl: '#',
