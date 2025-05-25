@@ -35,11 +35,11 @@ const Hero = () => {
       id="home" 
       className="min-h-screen flex items-center pt-20 md:pt-24 bg-gradient-to-br from-background-light via-blue-50 to-indigo-100 dark:from-background-dark dark:via-gray-900 dark:to-accent-dark/5" // Updated background, pt
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16"> {/* Added more vertical padding */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center"> {/* Increased gap */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16"> 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center"> {/* Changed to md:grid-cols-3 */}
           
-          {/* Text Content Column */}
-          <div className="space-y-6 text-center md:text-left">
+          {/* Text Content Column - now takes 2/3 of the space on md+ screens */}
+          <div className="space-y-6 text-center md:text-left md:col-span-2"> {/* Added md:col-span-2 */}
             <motion.h1 
               custom={0} // Stagger index
               initial="hidden"
@@ -107,7 +107,10 @@ const Hero = () => {
             variants={imageVariants}
             initial="hidden"
             animate="visible"
-            className="relative mx-auto w-72 sm:w-80 md:w-96 lg:w-[26rem]"
+            // On mobile, mx-auto centers it. On desktop, it's in its own column.
+            // md:justify-self-end would push it to the right of its column.
+            // md:mx-0 to override mobile mx-auto if needed, but grid column handles it.
+            className="relative mx-auto w-72 sm:w-80 md:w-auto md:max-w-sm lg:max-w-md md:justify-self-center lg:justify-self-end" // Adjusted desktop width and alignment
           >
             <div 
               className="aspect-square rounded-full overflow-hidden shadow-2xl 
