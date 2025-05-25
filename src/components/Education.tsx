@@ -50,7 +50,6 @@ const Education = () => {
           <div className="absolute left-6 sm:left-8 top-0 h-full w-0.5 bg-accent-light/30 dark:bg-accent-dark/30 rounded-full"></div>
 
             {educationData.map((edu, index) => ( 
-            {educationData.map((edu, index) => ( 
               <motion.div
                 key={edu.id}
                 className="relative mb-12 group" // Removed pl-16/sm:pl-20 from here
@@ -65,7 +64,7 @@ const Education = () => {
                              w-12 h-12 sm:w-16 sm:h-16 bg-card-light dark:bg-card-dark rounded-full 
                              border-4 border-accent-light dark:border-accent-dark 
                              flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 z-10" // Added z-10 and updated left positioning
->
+                >
                   <img 
                     src={edu.logo} 
                     alt={`${edu.institution} Logo`} 
