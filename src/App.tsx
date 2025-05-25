@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'; // Added useState, useEffect
 import { motion, AnimatePresence } from 'framer-motion'; // Added motion, AnimatePresence
 import LoadingSpinner from './components/LoadingSpinner'; // Import the new spinner
 
-
 // Components
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -67,8 +66,8 @@ function App() {
         </motion.div>
       )}
     </>
-
   );
 }
 
 export default App;
+// Re-trigger Netlify build - Timestamp: 2023-12-01T12:34:56Z
