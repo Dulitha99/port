@@ -70,7 +70,6 @@ const Experience = () => {
           <div className="absolute left-6 sm:left-8 top-0 h-full w-0.5 bg-accent-light/30 dark:bg-accent-dark/30 rounded-full"></div>
 
             {experiencesData.map((exp, index) => (
-            {experiencesData.map((exp, index) => (
               // Each item is relative, its content card will use the padding.
               // The node will be positioned absolutely relative to the main timeline container's coordinate system.
               <motion.div
