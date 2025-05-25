@@ -132,11 +132,17 @@ const ContactPage: React.FC = () => {
             </div>
           </div>
           <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-             <h3 className="text-lg font-medium text-primary-light dark:text-primary-dark mb-2">My Location</h3>
-            <div className="aspect-video bg-gray-200 dark:bg-gray-700 rounded-md">
-              <p className="flex items-center justify-center h-full text-secondary-light dark:text-secondary-dark">
-                Map Placeholder
-              </p>
+            <h3 className="text-lg font-medium text-primary-light dark:text-primary-dark mb-2">My Location</h3>
+            <div className="aspect-video rounded-md overflow-hidden shadow-md"> {/* Added overflow-hidden and shadow */}
+              <iframe
+                src="https://maps.google.com/maps?q=Colombo%2C%20Sri%20Lanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                className="w-full h-full"
+                style={{ border: 0 }}
+                allowFullScreen={true} // React uses camelCase for boolean attributes or direct boolean
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Map of Colombo, Sri Lanka" 
+              ></iframe>
             </div>
           </div>
         </motion.div>
