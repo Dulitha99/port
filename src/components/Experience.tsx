@@ -5,11 +5,29 @@ import { BriefcaseIcon } from '@heroicons/react/24/outline'; // Keeping the main
 const experiencesData = [ // Renamed and added id/logo
   {
     id: 1,
+    role: 'Senior Executive Cyber Security Analyst',
+    company: 'EFL Global',
+    logo: '/efl_logo.jpg',
+    period: 'AUG 06, 2025 – PRESENT',
+    responsibilities: [
+      'As a Cyber Security Analyst within the Global IT Team, I collaborated closely with other Security Analysts to strengthen the organization’s cybersecurity posture by leveraging advanced security technologies and proactive defense strategies. Key responsibilities included:',
+      '• Monitoring and triaging security alerts from CrowdStrike XDR, Microsoft Defender, Firewalls, and Azure Security Center, while assisting in incident response.',
+      '• Analyzing and mitigating email-based threats such as phishing, spam, and malware across enterprise security gateways.',
+      '• Providing Tier 1 and Tier 2 support for Microsoft 365 services, including managing access, email security, and endpoint protection.',
+      '• Monitoring security posture using Microsoft Azure dashboards and collaborating on vulnerability mitigation initiatives.',
+      '• Supporting the deployment of cybersecurity tools and infrastructure projects to enhance defense mechanisms.',
+      '• Actively contributing to the SOC helpdesk, ensuring timely response, escalation, and resolution of security incidents.',
+      '• Ensuring alignment with security policies, compliance standards, and industry best practices.',
+    ],
+  },
+  {
+    id: 2,
     role: 'EXECUTIVE SECURITY OPERATIONS CENTER ANALYST', // Changed title to role
     company: 'MIDAS STRATEGIC IT SRI LANKA',
     logo: '/midas.png', 
-    period: 'JAN 17, 2025 – PRESENT',
+    period: 'JAN 17, 2025 – JUL 17, 2025',
     responsibilities: [
+      'As a Security Operations Center (SOC) Analyst within the Global IT Team, I contributed to strengthening the organization’s cybersecurity posture by leveraging advanced security technologies and proactive defense strategies. Key responsibilities included:',
       'Monitor and analyze security incidents using Palo Alto Cortex XDR.',
       'Conduct threat hunting and forensic analysis.',
       'Manage identity protection and access security via Entra ID.',
@@ -18,12 +36,13 @@ const experiencesData = [ // Renamed and added id/logo
     ],
   },
   {
-    id: 2,
+    id: 3,
     role: 'ASSOCIATE CYBER SECURITY ANALYST', // Changed title to role
     company: 'IVEDHA INC TORONTO ONTARIO CANADA',
     logo: '/ivedha.png',
     period: 'SEP 02, 2024 – DEC 31, 2024',
     responsibilities: [
+      'As an Associate Cyber Security Analyst, I contributed to enhancing organizational security by working on the following:',
       'Conducted penetration testing and Vulnerability Assessments.',
       'Managed endpoint security with Microsoft Defender XDR.',
       'Administered Entra ID and Microsoft Intune for security and compliance.',
@@ -31,12 +50,13 @@ const experiencesData = [ // Renamed and added id/logo
     ],
   },
   {
-    id: 3,
+    id: 4,
     role: 'INTERN CYBER SECURITY', // Changed title to role
     company: 'IVEDHA INC, TORONTO ONTARIO CANADA',
     logo: '/ivedha.png',
     period: 'FEB 19, 2024 – SEP 02, 2024',
     responsibilities: [
+      'As a Cyber Security Intern, I gained hands-on experience in various aspects of cybersecurity, including:',
       'Assisted in web application vulnerability assessments.',
       'Conducted security training and phishing simulations.',
       'Supported security solution development.',
