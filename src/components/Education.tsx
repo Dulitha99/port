@@ -10,8 +10,11 @@ const educationData = [ // Renamed and added id/logo
     logo: '/sliit.png', 
     period: 'OCT 2021 – PRESENT', // Standardized date format
     details: [
-      'Relevant Coursework: Web Security, Cryptography, Mobile Security, Network Security, Secure Economic Analysis, Systems and Network Programming, Database Management Systems for Security, Secure Operating Systems, Enterprise Standards for Information Security, Secure Software Systems, Cyber Forensics and Incident Response, Information Security Policy and Management, Information Security Risk Management.'
+      'Relevant Coursework: Web Security, Cryptography, Mobile Security, Network Security, Secure Economic Analysis, Systems and Network Programming, Database Management Systems for Security, Secure Operating Systems, Enterprise Standards for Information Security, Secure Software Systems, Cyber Forensics and Incident Response, Information Security Policy and Management, Information Security Risk Management.',
     ],
+    nonAcademic: [
+      'Member of SLIIT Cricket Team 2022 and 2023'
+    ]
   },
   {
     id: 2,
@@ -20,8 +23,13 @@ const educationData = [ // Renamed and added id/logo
     logo: '/kingswood.png',
     period: 'MAY 2017 – NOV 2020',
     details: [
-      'Subjects: Combined Mathematics (S), Physics (S), Information Technology (C), General English (A).'
+      'Subjects: Combined Mathematics (S), Physics (S), Information Technology (C), General English (A).',
     ],
+    nonAcademic: [
+      'Member of 1 st XI and 2 nd XI cricket teams 2017/2018 and 2018/2019',
+      'Member of Interact Club',
+      'Commitee member of IT Society'
+    ]
   },
 ];
 
@@ -90,6 +98,16 @@ const Education = () => {
                       ))}
                     </ul>
                   )}
+                  {edu.nonAcademic && edu.nonAcademic.length > 0 && (
+                    <div className="mt-4">
+                      <h4 className="text-lg font-semibold text-accent-light dark:text-accent-dark mb-2">Non Academic</h4>
+                      <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-primary-light dark:text-primary-dark text-opacity-90 dark:text-opacity-90">
+                        {edu.nonAcademic.map((item, idx) => (
+                          <li key={idx} className="leading-relaxed">{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -100,4 +118,4 @@ const Education = () => {
   );
 };
 
-export default Education; 
+export default Education;

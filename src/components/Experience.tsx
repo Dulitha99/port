@@ -9,15 +9,15 @@ const experiencesData = [ // Renamed and added id/logo
     company: 'EFL Global',
     logo: '/efl_logo.jpg',
     period: 'AUG 06, 2025 – PRESENT',
+    intro: 'As a Cyber Security Analyst within the Global IT Team, I collaborated closely with other Security Analysts to strengthen the organization’s cybersecurity posture by leveraging advanced security technologies and proactive defense strategies. Key responsibilities included:',
     responsibilities: [
-      'As a Cyber Security Analyst within the Global IT Team, I collaborated closely with other Security Analysts to strengthen the organization’s cybersecurity posture by leveraging advanced security technologies and proactive defense strategies. Key responsibilities included:',
-      '• Monitoring and triaging security alerts from CrowdStrike XDR, Microsoft Defender, Firewalls, and Azure Security Center, while assisting in incident response.',
-      '• Analyzing and mitigating email-based threats such as phishing, spam, and malware across enterprise security gateways.',
-      '• Providing Tier 1 and Tier 2 support for Microsoft 365 services, including managing access, email security, and endpoint protection.',
-      '• Monitoring security posture using Microsoft Azure dashboards and collaborating on vulnerability mitigation initiatives.',
-      '• Supporting the deployment of cybersecurity tools and infrastructure projects to enhance defense mechanisms.',
-      '• Actively contributing to the SOC helpdesk, ensuring timely response, escalation, and resolution of security incidents.',
-      '• Ensuring alignment with security policies, compliance standards, and industry best practices.',
+      'Monitoring and triaging security alerts from CrowdStrike XDR, Microsoft Defender, Firewalls, and Azure Security Center, while assisting in incident response.',
+      'Analyzing and mitigating email-based threats such as phishing, spam, and malware across enterprise security gateways.',
+      'Providing Tier 1 and Tier 2 support for Microsoft 365 services, including managing access, email security, and endpoint protection.',
+      'Monitoring security posture using Microsoft Azure dashboards and collaborating on vulnerability mitigation initiatives.',
+      'Supporting the deployment of cybersecurity tools and infrastructure projects to enhance defense mechanisms.',
+      'Actively contributing to the SOC helpdesk, ensuring timely response, escalation, and resolution of security incidents.',
+      'Ensuring alignment with security policies, compliance standards, and industry best practices.',
     ],
   },
   {
@@ -26,8 +26,8 @@ const experiencesData = [ // Renamed and added id/logo
     company: 'MIDAS STRATEGIC IT SRI LANKA',
     logo: '/midas.png', 
     period: 'JAN 17, 2025 – JUL 17, 2025',
+    intro: 'As a Security Operations Center (SOC) Analyst within the Global IT Team, I contributed to strengthening the organization’s cybersecurity posture by leveraging advanced security technologies and proactive defense strategies. Key responsibilities included:',
     responsibilities: [
-      'As a Security Operations Center (SOC) Analyst within the Global IT Team, I contributed to strengthening the organization’s cybersecurity posture by leveraging advanced security technologies and proactive defense strategies. Key responsibilities included:',
       'Monitor and analyze security incidents using Palo Alto Cortex XDR.',
       'Conduct threat hunting and forensic analysis.',
       'Manage identity protection and access security via Entra ID.',
@@ -41,8 +41,8 @@ const experiencesData = [ // Renamed and added id/logo
     company: 'IVEDHA INC TORONTO ONTARIO CANADA',
     logo: '/ivedha.png',
     period: 'SEP 02, 2024 – DEC 31, 2024',
+    intro: 'As an Associate Cyber Security Analyst, I contributed to enhancing organizational security by working on the following:',
     responsibilities: [
-      'As an Associate Cyber Security Analyst, I contributed to enhancing organizational security by working on the following:',
       'Conducted penetration testing and Vulnerability Assessments.',
       'Managed endpoint security with Microsoft Defender XDR.',
       'Administered Entra ID and Microsoft Intune for security and compliance.',
@@ -55,8 +55,8 @@ const experiencesData = [ // Renamed and added id/logo
     company: 'IVEDHA INC, TORONTO ONTARIO CANADA',
     logo: '/ivedha.png',
     period: 'FEB 19, 2024 – SEP 02, 2024',
+    intro: 'As a Cyber Security Intern, I gained hands-on experience in various aspects of cybersecurity, including:',
     responsibilities: [
-      'As a Cyber Security Intern, I gained hands-on experience in various aspects of cybersecurity, including:',
       'Assisted in web application vulnerability assessments.',
       'Conducted security training and phishing simulations.',
       'Supported security solution development.',
@@ -125,6 +125,7 @@ const Experience = () => {
                   <p className="text-xs sm:text-sm text-secondary-light dark:text-secondary-dark mb-4">
                     {exp.period}
                   </p>
+                  {exp.intro && <p className="text-sm sm:text-base text-primary-light dark:text-primary-dark text-opacity-90 dark:text-opacity-90 mb-4">{exp.intro}</p>}
                   <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-primary-light dark:text-primary-dark text-opacity-90 dark:text-opacity-90">
                     {exp.responsibilities.map((resp, idx) => (
                       <li key={idx} className="leading-relaxed">{resp}</li>
@@ -140,4 +141,4 @@ const Experience = () => {
   );
 };
 
-export default Experience; 
+export default Experience;
