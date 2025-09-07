@@ -118,7 +118,7 @@ const Hero = () => {
                          ring-offset-4 ring-offset-background-light dark:ring-offset-background-dark"
             >
               <img
-                src="/dulitha.JPEG.jpg" 
+                src="/IMG_0797.JPG" 
                 alt="Dulitha Wickramasinghe"
                 className="w-full h-full object-cover"
               />
