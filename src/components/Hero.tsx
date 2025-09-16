@@ -1,134 +1,65 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-
-// Animation variants for text elements
-const textVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({ // Custom property 'i' for stagger delay
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.2, // Stagger by 0.2s for each item
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  })
-};
-
-// Animation for the image
-const imageVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 0.5, // Delay slightly after text
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
+import { TypeAnimation } from 'react-type-animation';
+import { Button } from '~/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center pt-20 md:pt-24 bg-gradient-to-br from-background-light via-blue-50 to-indigo-100 dark:from-background-dark dark:via-gray-900 dark:to-accent-dark/5" // Updated background, pt
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16"> 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center"> {/* Changed to md:grid-cols-3 */}
-          
-          {/* Text Content Column - now takes 2/3 of the space on md+ screens */}
-          <div className="space-y-6 text-center md:text-left md:col-span-2"> {/* Added md:col-span-2 */}
-            <motion.h1 
-              custom={0} // Stagger index
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary-light dark:text-primary-dark tracking-normal" // Adjusted font size and tracking
-            >
-              DULITHA WICKRAMASINGHE
-            </motion.h1>
-            <motion.p 
-              custom={1} // Stagger index
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="text-2xl sm:text-3xl font-medium text-accent-light dark:text-accent-dark mb-6"
-            >
-              Cybersecurity Professional
-            </motion.p>
-            {/* Social Links / CTAs */}
-            <motion.div 
-              custom={3} // Stagger index (summary is 2)
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="flex flex-wrap justify-center md:justify-start gap-4 pt-4"
-            >
-              <motion.a
-                href="https://www.linkedin.com/in/dulitha-wickramasinghe-398971211/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary text-base px-6 py-3" 
-                whileHover={{ scale: 1.05, y: -2 }} 
-                whileTap={{ scale: 0.95 }}
-              >
-                LinkedIn
-              </motion.a>
-              <motion.a
-                href="https://github.com/Dulitha99"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary text-base px-6 py-3" 
-                whileHover={{ scale: 1.05, y: -2 }} 
-                whileTap={{ scale: 0.95 }}
-              >
-                GitHub
-              </motion.a>
-            </motion.div>
-            
-            <motion.p 
-              custom={2} // Stagger index
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="pt-6 max-w-xl mx-auto md:mx-0 text-lg text-secondary-light dark:text-secondary-dark leading-relaxed"
-            >
-              I am a cybersecurity professional with expertise in SOC operations, threat hunting, endpoint security, penetration testing, 
-              and security awareness training. Skilled in Palo Alto Cortex XDR, Entra ID, Identity Protection, and email security. 
-              Passionate about safeguarding digital assets through innovative security strategies. Strong team player with excellent 
-              problem-solving and communication skills.
-            </motion.p>
-          </div>
+      {/* Background Grid */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className="absolute inset-0 bg-background"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+              linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px)
+            `,
+            backgroundSize: '2rem 2rem',
+          }}
+        />
+        <div className="absolute inset-0 bg-background/90" />
+      </div>
 
-          {/* Image Column */}
-          <motion.div 
-            variants={imageVariants}
-            initial="hidden"
-            animate="visible"
-            // On mobile, mx-auto centers it. On desktop, it's in its own column.
-            // md:justify-self-end would push it to the right of its column.
-            // md:mx-0 to override mobile mx-auto if needed, but grid column handles it.
-            className="relative mx-auto w-72 sm:w-80 md:w-auto md:max-w-sm lg:max-w-md md:justify-self-center lg:justify-self-end" // Adjusted desktop width and alignment
-          >
-            <div 
-              className="aspect-square rounded-full overflow-hidden shadow-2xl 
-                         ring-4 ring-card-light dark:ring-gray-700 
-                         ring-offset-4 ring-offset-background-light dark:ring-offset-background-dark"
-            >
-              <img
-                src="/IMG_0797.JPG" 
-                alt="Dulitha Wickramasinghe"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* Old animated border removed */}
-          </motion.div>
+      <div className="container mx-auto px-4 text-center relative z-10">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground mb-4">
+          <span className="text-primary">SYSTEM:</span> SECURE
+        </h1>
+
+        <TypeAnimation
+          sequence={[
+            '// Defending the digital frontier...',
+            2000,
+            '// Analyzing threats in real-time.',
+            2000,
+            '// Engineering resilient security architectures.',
+            2000,
+            '// Hunting for vulnerabilities, so you don\'t have to.',
+            2000,
+          ]}
+          wrapper="p"
+          cursor={true}
+          repeat={Infinity}
+          className="font-mono text-lg md:text-xl text-muted-foreground mb-8"
+        />
+
+        <div className="flex justify-center gap-4">
+          <Button asChild size="lg">
+            <a href="#projects">
+              View Projects <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+          </Button>
+          <Button asChild size="lg" variant="secondary">
+            <a href="#blogs">
+              Read Blog
+            </a>
+          </Button>
         </div>
       </div>
     </section>
   );
 };
 
-export default Hero; 
+export default Hero;

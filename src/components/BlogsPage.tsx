@@ -1,102 +1,100 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
+import { Button } from '~/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+import matter from 'gray-matter';
+import { Link } from 'react-router-dom';
+import { SkeletonCard } from '~/components/ui/skeleton-card'; // Import skeleton
 
-// Function to generate a URL-friendly slug from a title (can be kept for keys or future use)
-const generateSlug = (title: string): string => {
-  return title
-    .toLowerCase()
-    .replace(/\s+/g, '-') 
-    .replace(/[^\w-]+/g, '') 
-    .replace(/--+/g, '-'); 
-};
+interface Post {
+  slug: string;
+  frontmatter: {
+    title: string;
+    date: string;
+    tags: string[];
+    [key: string]: any;
+  };
+}
 
-const articlesData = [
-  {
-    id: 'article1',
-    title: 'Nmap Basics',
-    articleUrl: 'https://medium.com/@dulithawickramasinghe/nmap-basics-90b024940014',
-    summary: "An insightful article discussing Nmap Basics. Click 'Read More' to delve into the details on Medium.",
-    imageUrl: '/nmap.jfif', // Updated image URL
-    slug: generateSlug('Nmap Basics'),
-  },
-  {
-    id: 'article2',
-    title: 'Blockchain Technology',
-    articleUrl: 'https://medium.com/@dulithawickramasinghe/blockchain-technology-a34588b30d91',
-    summary: "An insightful article discussing Blockchain Technology. Click 'Read More' to delve into the details on Medium.",
-    imageUrl: '/blockchain.jfif', // Updated image URL
-    slug: generateSlug('Blockchain Technology'),
-  },
-  {
-    id: 'article3',
-    title: 'Onboarding Microsoft Sentinel',
-    articleUrl: 'https://medium.com/@dulithawickramasinghe/onboarding-microsoft-sentinel-fe91602dbd4a',
-    summary: "An insightful article discussing Onboarding Microsoft Sentinel. Click 'Read More' to delve into the details on Medium.",
-    imageUrl: '/Sentinel.jpg', // Updated image URL
-    slug: generateSlug('Onboarding Microsoft Sentinel'),
-  }
-];
+const BlogsPage = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
-const BlogsPage: React.FC = () => {
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setIsLoading(true);
+      const postModules = import.meta.glob('../content/blog/*.md', { as: 'raw' });
+
+      const postsData = await Promise.all(
+        Object.entries(postModules).map(async ([path, resolver]) => {
+          const rawContent = await resolver();
+          const { data } = matter(rawContent);
+          const slug = path.split('/').pop()?.replace('.md', '') ?? '';
+
+          return {
+            slug,
+            frontmatter: data as Post['frontmatter'],
+          };
+        })
+      );
+
+      postsData.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+      setPosts(postsData);
+      setIsLoading(false); // Set loading to false after fetching
+    };
+
+    fetchPosts();
+  }, []);
+
   return (
-    <div id="blogs" className="container mx-auto px-4 py-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }} // Consistent with previous animations
-        viewport={{ once: true, amount: 0.3 }} // Consistent viewport
-      >
-        <h1 className="text-4xl sm:text-5xl font-bold text-center mb-4 text-primary-light dark:text-primary-dark">
-          Insights & Articles
-        </h1>
-        <p className="text-lg text-center text-secondary-light dark:text-secondary-dark mb-12">
-          Explore my latest thoughts and findings in the world of cybersecurity, shared on Medium.
-        </p>
-      </motion.div>
+    <section id="blogs" className="py-20">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-heading text-center mb-4">Intel & Dispatches</h2>
+        <p className="text-center text-muted-foreground mb-12">Field notes from the digital front lines.</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {articlesData.map((article, index) => (
-          <motion.div
-            key={article.id} // Using new id
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true, amount: 0.2 }} // Consistent with project cards
-            className="bg-card-light dark:bg-card-dark rounded-xl shadow-lg overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-2xl" // Using card styles
-          >
-            <div className="w-full h-48 bg-gray-300 dark:bg-gray-700 flex items-center justify-center overflow-hidden"> {/* Ensure bg for placeholder visibility */}
-              {article.imageUrl ? (
-                <img 
-                  src={article.imageUrl} 
-                  alt={article.title} 
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              ) : (
-                <span className="text-secondary-light dark:text-secondary-dark">Article Preview</span>
-              )}
-            </div>
-
-            <div className="p-6 flex flex-col flex-grow">
-              <h2 className="text-2xl font-semibold mb-3 text-accent-light dark:text-accent-dark">
-                {article.title}
-              </h2>
-              {/* Date removed as it's not in the new data */}
-              <p className="text-primary-light dark:text-primary-dark mb-6 flex-grow text-sm leading-relaxed"> {/* Added text-sm and leading-relaxed */}
-                {article.summary}
-              </p>
-              <a
-                href={article.articleUrl} // Using actual article URL
-                target="_blank" // Open in new tab
-                rel="noopener noreferrer" // Security for new tab
-                className="inline-block mt-auto text-accent-light dark:text-accent-dark font-semibold hover:underline self-start"
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {isLoading ? (
+            Array.from({ length: 3 }).map((_, i) => <SkeletonCard key={i} />)
+          ) : (
+            posts.map((post, index) => (
+              <motion.div
+                key={post.slug}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.2 }}
               >
-                Read More on Medium &rarr;
-              </a>
-            </div>
-          </motion.div>
-        ))}
+                <Card className="bg-card/60 backdrop-blur-sm h-full flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="font-heading text-xl text-primary">{post.frontmatter.title}</CardTitle>
+                    <p className="text-sm text-muted-foreground font-mono">
+                      {new Date(post.frontmatter.date).toLocaleDateString()}
+                    </p>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <div className="flex flex-wrap gap-2">
+                      {post.frontmatter.tags.map(tag => (
+                        <span key={tag} className="px-2 py-1 text-xs bg-secondary text-secondary-foreground rounded-md font-mono">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <Button asChild variant="outline" className="w-full font-mono">
+                      <Link to={`/blog/${post.slug}`}>
+                        Read Dispatch <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            ))
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

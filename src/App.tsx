@@ -1,73 +1,96 @@
-import React, { useState, useEffect } from 'react'; // Added useState, useEffect
-import { motion, AnimatePresence } from 'framer-motion'; // Added motion, AnimatePresence
-import LoadingSpinner from './components/LoadingSpinner'; // Import the new spinner
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from '~/components/theme-provider';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // Components
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Experience from './components/Experience';
-import Education from './components/Education';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import BlogsPage from './components/BlogsPage';
-import ContactPage from './components/ContactPage';
-import Footer from './components/Footer';
+import Navbar from '~/components/Navbar';
+import Footer from '~/components/Footer';
+import Hero from '~/components/Hero';
+import Experience from '~/components/Experience';
+import Education from '~/components/Education';
+import Skills from '~/components/Skills';
+import Projects from '~/components/Projects';
+import BlogsPage from '~/components/BlogsPage';
+import ContactPage from '~/components/ContactPage';
+import About from '~/components/About';
+import BlogPostPage from '~/components/BlogPostPage';
+import AdminDashboard from '~/components/AdminDashboard';
+import ProtectedRoute from '~/components/ProtectedRoute';
+import NotFound from '~/components/NotFound';
 
-function App() {
-  const [isLoading, setIsLoading] = useState(true);
+// Declare netlifyIdentity
+declare const netlifyIdentity: any;
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500); // Simulate loading for 1.5 seconds
-    return () => clearTimeout(timer);
-  }, []);
-
+// Main Layout Component
+function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <> {/* Use React Fragment to allow AnimatePresence and motion.div at the root level */}
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            key="loader"
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-background-light dark:bg-background-dark"
-            exit={{ opacity: 0, transition: { duration: 0.5 } }}
-          >
-            <LoadingSpinner />
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-grow">{children}</main>
+      <Footer />
+    </div>
+  );
+}
 
-      {/* Main application content with fade-in animation */}
-      {/* We only want to mount the main app content when isLoading is false to prevent premature rendering */}
-      {!isLoading && (
-        <motion.div
-          key="app-content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }} // Slight delay after loader potentially exits
-          // The existing classes from the original root div are applied here
-          className="min-h-screen bg-background-light dark:bg-background-dark transition-colors duration-300"
-        >
-          <Navbar />
-          <main className="bg-background-light dark:bg-background-dark">
-            <Hero />
-            <Experience />
-            <Education />
-            <Skills />
-            <Projects />
-            <div id="blogs" className="bg-background-light dark:bg-background-dark">
-              <BlogsPage />
-            </div>
-            <div id="contact" className="bg-background-light dark:bg-background-dark">
-              <ContactPage />
-            </div>
-          </main>
-          <Footer />
-        </motion.div>
-      )}
+// Home Page Component
+function HomePage() {
+  return (
+    <>
+      <Helmet>
+        <title>Cyber Security Analyst Portfolio | Home</title>
+        <meta name="description" content="The personal portfolio of a passionate Cyber Security Analyst, showcasing skills, projects, and experience in the field of digital defense." />
+      </Helmet>
+      <Hero />
+      <About />
+      <Experience />
+      <Education />
+      <Skills />
+      <Projects />
+      <div id="blogs">
+        <BlogsPage />
+      </div>
+      <div id="contact">
+        <ContactPage />
+      </div>
     </>
   );
 }
 
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout><HomePage /></Layout>} />
+      <Route path="/blog/:slug" element={<Layout><BlogPostPage /></Layout>} />
+      <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute>
+            <Layout><AdminDashboard /></Layout>
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+
+function App() {
+  useEffect(() => {
+    if (window.netlifyIdentity) {
+      netlifyIdentity.init();
+    }
+  }, []);
+
+  return (
+    <HelmetProvider>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <Router>
+          <AppRoutes />
+        </Router>
+      </ThemeProvider>
+    </HelmetProvider>
+  );
+}
+
 export default App;
-// Re-trigger Netlify build - Timestamp: 2023-12-01T12:34:56Z

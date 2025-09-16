@@ -1,141 +1,87 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { BriefcaseIcon } from '@heroicons/react/24/outline'; // Keeping the main section icon
+import { Briefcase } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 
-const experiencesData = [ // Renamed and added id/logo
+const experiencesData = [
   {
     id: 1,
     role: 'Senior Executive Cyber Security Analyst',
     company: 'EFL Global',
-    logo: '/efl_logo.jpg',
-    period: 'AUG 06, 2025 – PRESENT',
-    intro: 'As a Cyber Security Analyst within the Global IT Team, I collaborated closely with other Security Analysts to strengthen the organization’s cybersecurity posture by leveraging advanced security technologies and proactive defense strategies. Key responsibilities included:',
+    period: 'AUG 2025 – PRESENT',
     responsibilities: [
-      'Monitoring and triaging security alerts from CrowdStrike XDR, Microsoft Defender, Firewalls, and Azure Security Center, while assisting in incident response.',
-      'Analyzing and mitigating email-based threats such as phishing, spam, and malware across enterprise security gateways.',
-      'Providing Tier 1 and Tier 2 support for Microsoft 365 services, including managing access, email security, and endpoint protection.',
-      'Monitoring security posture using Microsoft Azure dashboards and collaborating on vulnerability mitigation initiatives.',
-      'Supporting the deployment of cybersecurity tools and infrastructure projects to enhance defense mechanisms.',
-      'Actively contributing to the SOC helpdesk, ensuring timely response, escalation, and resolution of security incidents.',
-      'Ensuring alignment with security policies, compliance standards, and industry best practices.',
+      'Monitored and triaged security alerts from CrowdStrike XDR and Microsoft Defender.',
+      'Analyzed and mitigated email-based threats such as phishing and malware.',
+      'Provided Tier 1/2 support for Microsoft 365 services and endpoint protection.',
+      'Contributed to the SOC helpdesk, ensuring timely incident response and resolution.',
     ],
   },
   {
     id: 2,
-    role: 'EXECUTIVE SECURITY OPERATIONS CENTER ANALYST', // Changed title to role
-    company: 'MIDAS STRATEGIC IT SRI LANKA',
-    logo: '/midas.png', 
-    period: 'JAN 17, 2025 – JUL 17, 2025',
-    intro: 'As a Security Operations Center (SOC) Analyst within the Global IT Team, I contributed to strengthening the organization’s cybersecurity posture by leveraging advanced security technologies and proactive defense strategies. Key responsibilities included:',
+    role: 'Security Operations Center Analyst',
+    company: 'MIDAS STRATEGIC IT',
+    period: 'JAN 2025 – JUL 2025',
     responsibilities: [
-      'Monitor and analyze security incidents using Palo Alto Cortex XDR.',
-      'Conduct threat hunting and forensic analysis.',
-      'Manage identity protection and access security via Entra ID.',
-      'Oversee email security operations using Microsoft Defender for Office 365.',
-      'Provide security awareness training.',
+      'Monitored and analyzed security incidents using Palo Alto Cortex XDR.',
+      'Conducted threat hunting and forensic analysis.',
+      'Managed identity protection and access security via Entra ID.',
+      'Oversaw email security operations using Microsoft Defender for Office 365.',
     ],
   },
   {
     id: 3,
-    role: 'ASSOCIATE CYBER SECURITY ANALYST', // Changed title to role
-    company: 'IVEDHA INC TORONTO ONTARIO CANADA',
-    logo: '/ivedha.png',
-    period: 'SEP 02, 2024 – DEC 31, 2024',
-    intro: 'As an Associate Cyber Security Analyst, I contributed to enhancing organizational security by working on the following:',
+    role: 'Associate Cyber Security Analyst',
+    company: 'IVEDHA INC',
+    period: 'SEP 2024 – DEC 2024',
     responsibilities: [
-      'Conducted penetration testing and Vulnerability Assessments.',
+      'Conducted penetration testing and vulnerability assessments.',
       'Managed endpoint security with Microsoft Defender XDR.',
       'Administered Entra ID and Microsoft Intune for security and compliance.',
-      'Conducted and implemented security awareness training and phishing campaigns using KnowBe4 Platform.',
-    ],
-  },
-  {
-    id: 4,
-    role: 'INTERN CYBER SECURITY', // Changed title to role
-    company: 'IVEDHA INC, TORONTO ONTARIO CANADA',
-    logo: '/ivedha.png',
-    period: 'FEB 19, 2024 – SEP 02, 2024',
-    intro: 'As a Cyber Security Intern, I gained hands-on experience in various aspects of cybersecurity, including:',
-    responsibilities: [
-      'Assisted in web application vulnerability assessments.',
-      'Conducted security training and phishing simulations.',
-      'Supported security solution development.',
-      'Supported in Policy development.',
+      'Conducted security awareness training and phishing campaigns using KnowBe4.',
     ],
   },
 ];
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-16 bg-background-light dark:bg-background-dark"> {/* Adjusted padding */}
+    <section id="experience" className="py-20">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }} // Slightly longer duration
-          viewport={{ once: true, amount: 0.3 }} // Trigger when 30% visible
-          className="text-center mb-16" // Centered title area, more bottom margin
-        >
-          <div className="inline-flex items-center justify-center mb-4"> {/* Wrapper for icon and title */}
-            <BriefcaseIcon className="h-10 w-10 text-accent-light dark:text-accent-dark mr-3" /> {/* Larger icon, margin right */}
-            <h2 className="text-4xl font-bold text-primary-light dark:text-primary-dark">Work Experience</h2> {/* Updated h2 style */}
-          </div>
-          <p className="text-lg text-secondary-light dark:text-secondary-dark max-w-2xl mx-auto"> {/* Subtitle */}
-            My professional journey and key contributions in the field of cybersecurity.
-          </p>
-        </motion.div>
+        <h2 className="text-4xl font-heading text-center mb-12">Career Trajectory</h2>
 
-        <div className="relative max-w-3xl mx-auto"> {/* Timeline container */}
-          {/* The vertical timeline bar */}
-          <div className="absolute left-6 sm:left-8 top-0 h-full w-0.5 bg-accent-light/30 dark:bg-accent-dark/30 rounded-full"></div>
+        <div className="relative max-w-3xl mx-auto">
+          {/* Vertical line */}
+          <div className="absolute left-4 top-0 h-full w-0.5 bg-border" />
 
-            {experiencesData.map((exp, index) => (
-              // Each item is relative, its content card will use the padding.
-              // The node will be positioned absolutely relative to the main timeline container's coordinate system.
-              <motion.div
-                key={exp.id}
-                className="relative mb-12 group" // Removed pl-16/sm:pl-20 from here
-                initial={{ opacity: 0, x: -50 }} 
-                whileInView={{ opacity: 1, x: 0 }} 
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-              >
-                {/* Timeline Node (Circle with Logo) - Positioned relative to the line */}
-                <div 
-                  className="absolute left-6 sm:left-8 top-1 transform -translate-x-1/2 
-                             w-12 h-12 sm:w-16 sm:h-16 bg-card-light dark:bg-card-dark rounded-full 
-                             border-4 border-accent-light dark:border-accent-dark 
-                             flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 z-10" // Added z-10
-                >
-                  <img 
-                    src={exp.logo} 
-                    alt={`${exp.company} Logo`} 
-                    className="h-6 w-6 sm:h-8 sm:h-8 object-contain rounded-sm"
-                  />
-                </div>
+          {experiencesData.map((exp, index) => (
+            <motion.div
+              key={exp.id}
+              className="relative pl-12 mb-12"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              {/* Timeline Node */}
+              <div className="absolute left-4 top-1 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background" />
 
-                {/* Content Card - Now needs its own left margin/padding to clear the node */}
-                <div className="ml-16 sm:ml-20 bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-accent-light dark:text-accent-dark mb-1">
-                    {exp.role}
-                  </h3>
-                  <p className="text-md sm:text-lg font-medium text-primary-light dark:text-primary-dark mb-1">
-                    {exp.company}
-                  </p>
-                  <p className="text-xs sm:text-sm text-secondary-light dark:text-secondary-dark mb-4">
-                    {exp.period}
-                  </p>
-                  {exp.intro && <p className="text-sm sm:text-base text-primary-light dark:text-primary-dark text-opacity-90 dark:text-opacity-90 mb-4">{exp.intro}</p>}
-                  <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-primary-light dark:text-primary-dark text-opacity-90 dark:text-opacity-90">
+              <Card className="bg-card/60 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl font-heading text-primary">{exp.role}</CardTitle>
+                  <div className="flex justify-between items-baseline">
+                    <p className="text-md font-sans text-muted-foreground">{exp.company}</p>
+                    <p className="text-sm font-mono text-secondary">{exp.period}</p>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc list-inside space-y-2 font-mono text-sm">
                     {exp.responsibilities.map((resp, idx) => (
-                      <li key={idx} className="leading-relaxed">{resp}</li>
+                      <li key={idx}>{resp}</li>
                     ))}
                   </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        {/* </motion.div> // This motion.div was for the whole section, items will animate individually */}
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

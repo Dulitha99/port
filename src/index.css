@@ -1,91 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700&family=Orbitron:wght@400;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    /* Apply Inter font if not globally set by Tailwind config */
+  :root {
+    /* Dark Theme (Default) */
+    --background: 240 10% 3.9%; /* Dark Charcoal */
+    --foreground: 60 90% 95%; /* Light Gray */
+
+    --card: 240 10% 7%;
+    --card-foreground: 60 90% 95%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 60 90% 95%;
+
+    --primary: 158 95% 53%; /* Neon Green from #39FF14 */
+    --primary-foreground: 240 10% 3.9%;
+
+    --secondary: 210 100% 50%; /* Electric Blue from #00FFFF */
+    --secondary-foreground: 240 10% 3.9%;
+
+    --muted: 240 5% 25%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 271 76% 53%; /* Deep Purple from #8A2BE2 */
+    --accent-foreground: 60 90% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 90% 95%;
+
+    --border: 240 5% 25%;
+    --input: 240 5% 25%;
+    --ring: 158 95% 53%; /* Neon Green for focus rings */
+
+    --radius: 0.5rem;
+  }
+
+  .light {
+    /* Light Theme Fallback */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
   }
-
-  body {
-    @apply bg-background-light dark:bg-background-dark text-primary-light dark:text-primary-dark transition-colors duration-300 ease-in-out;
-  }
-
-  ::selection {
-    @apply bg-accent-light/30 dark:bg-accent-dark/30; /* Slightly increased opacity for selection */
-  }
-
-  /* Optional: Global heading styles if needed, assuming font-sans from Tailwind config handles Inter */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans; /* Ensures Inter is applied if specified as default sans font */
+    @apply font-heading;
   }
-}
-
-@layer components {
-  .section-title {
-    @apply text-3xl font-bold mb-8 text-accent-light dark:text-accent-dark; /* Updated margin and colors */
-  }
-  
-  .card {
-    /* Using new card colors from tailwind.config.js */
-    @apply bg-card-light dark:bg-card-dark rounded-lg shadow-lg p-6 transition-all duration-300 ease-in-out hover:shadow-xl; 
-  }
-  
-  .btn {
-    @apply px-4 py-2 rounded-md transition-all duration-300 ease-in-out font-medium; /* Updated duration and easing */
-  }
-  
-  .btn-primary {
-    /* Using new accent colors, text-white should still provide good contrast */
-    @apply bg-accent-light dark:bg-accent-dark text-white hover:opacity-90; 
-  }
-  
-  .nav-link {
-    /* Using new primary and accent colors */
-    @apply text-primary-light dark:text-primary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-200 ease-in-out;
-  }
-}
-
-/* Custom Animations (keeping existing) */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Smooth Scrolling (keeping existing) */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom Scrollbar (updated to use new color palette) */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  /* Using a very subtle version of the secondary color for the track */
-  @apply bg-secondary-light/10 dark:bg-secondary-dark/5; 
-}
-
-::-webkit-scrollbar-thumb {
-  /* Using accent color for the thumb */
-  @apply bg-accent-light/40 dark:bg-accent-dark/40 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  /* Darken/lighten accent color on hover */
-  @apply bg-accent-light/60 dark:bg-accent-dark/60;
 }
