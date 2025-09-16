@@ -31,11 +31,7 @@ const experiencesData = [
       'Ensuring alignment with security policies, compliance standards, and industry best practices.',
     ],
     technologies: ['CrowdStrike XDR', 'Microsoft Defender', 'Azure Security Center', 'Microsoft 365', 'SOC Operations'],
-    achievements: [
-      'Improved incident response time by 40%',
-      'Reduced false positive alerts by 60%',
-      'Implemented automated threat detection rules'
-    ]
+    achievements: []
   },
   {
     id: 2,
@@ -57,11 +53,7 @@ const experiencesData = [
       'Maintained up-to-date threat intelligence feeds to proactively defend against emerging cyber threats.',
     ],
     technologies: ['Cortex XDR', 'Prisma Access', 'Microsoft Defender XDR', 'VAPT', 'Threat Hunting', 'BIOCs'],
-    achievements: [
-      'Developed 15+ custom BIOC rules',
-      'Reduced threat detection time by 50%',
-      'Conducted 20+ security awareness sessions'
-    ]
+    achievements: []
   },
   {
     id: 3,
@@ -80,11 +72,7 @@ const experiencesData = [
       'Conducted and implemented security awareness training and phishing campaigns using KnowBe4 Platform.',
     ],
     technologies: ['Microsoft Defender XDR', 'Entra ID', 'Microsoft Intune', 'KnowBe4', 'Penetration Testing', 'VAPT'],
-    achievements: [
-      'Completed 50+ penetration tests',
-      'Improved security awareness by 80%',
-      'Managed 500+ endpoints'
-    ]
+    achievements: []
   },
   {
     id: 4,
@@ -103,11 +91,7 @@ const experiencesData = [
       'Supported in Policy development.',
     ],
     technologies: ['Web Application Security', 'Vulnerability Assessment', 'Security Training', 'Policy Development'],
-    achievements: [
-      'Completed 20+ vulnerability assessments',
-      'Conducted 15+ security training sessions',
-      'Developed 5+ security policies'
-    ]
+    achievements: []
   },
 ];
 
@@ -261,29 +245,6 @@ const Experience = () => {
                       </ul>
                     </div>
 
-                    {/* Achievements */}
-                    {exp.achievements && (
-                      <div>
-                        <div className="flex items-center space-x-2 mb-3">
-                          <BugAntIcon className="h-4 w-4 text-electric-purple" />
-                          <span className="text-sm font-semibold text-electric-purple">Key Achievements:</span>
-                        </div>
-                        <ul className="space-y-2">
-                          {exp.achievements.map((achievement, idx) => (
-                            <motion.li 
-                              key={idx} 
-                              className="flex items-start space-x-2 text-sm text-primary-dark leading-relaxed"
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: idx * 0.1 }}
-                            >
-                              <span className="text-electric-purple mt-1">★</span>
-                              <span>{achievement}</span>
-                            </motion.li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
                   </div>
                 </motion.div>
               </motion.div>

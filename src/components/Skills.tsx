@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   ShieldCheckIcon, 
@@ -49,7 +49,8 @@ const cyberSecurityTools = [
     description: 'Network protocol analyzer for deep packet inspection',
     color: 'text-terminal-green',
     bgColor: 'bg-terminal-green/10',
-    borderColor: 'border-terminal-green/30'
+    borderColor: 'border-terminal-green/30',
+    proficiency: 85
   },
   {
     id: 'tool2',
@@ -59,7 +60,8 @@ const cyberSecurityTools = [
     description: 'Security Information and Event Management platform',
     color: 'text-electric-blue',
     bgColor: 'bg-electric-blue/10',
-    borderColor: 'border-electric-blue/30'
+    borderColor: 'border-electric-blue/30',
+    proficiency: 90
   },
   {
     id: 'tool3',
@@ -69,7 +71,8 @@ const cyberSecurityTools = [
     description: 'Web application security testing platform',
     color: 'text-terminal-red',
     bgColor: 'bg-terminal-red/10',
-    borderColor: 'border-terminal-red/30'
+    borderColor: 'border-terminal-red/30',
+    proficiency: 88
   },
   {
     id: 'tool4',
@@ -79,7 +82,8 @@ const cyberSecurityTools = [
     description: 'Advanced penetration testing distribution',
     color: 'text-electric-purple',
     bgColor: 'bg-electric-purple/10',
-    borderColor: 'border-electric-purple/30'
+    borderColor: 'border-electric-purple/30',
+    proficiency: 92
   },
   {
     id: 'tool5',
@@ -89,17 +93,19 @@ const cyberSecurityTools = [
     description: 'Automation and security tool development',
     color: 'text-terminal-yellow',
     bgColor: 'bg-terminal-yellow/10',
-    borderColor: 'border-terminal-yellow/30'
+    borderColor: 'border-terminal-yellow/30',
+    proficiency: 80
   },
   {
     id: 'tool6',
-    name: 'SIEM',
+    name: 'Cortex XDR',
     category: 'Security Monitoring',
     icon: <EyeIcon className="h-8 w-8" />,
-    description: 'Security Information and Event Management',
+    description: 'Extended Detection and Response platform',
     color: 'text-terminal-green',
     bgColor: 'bg-terminal-green/10',
-    borderColor: 'border-terminal-green/30'
+    borderColor: 'border-terminal-green/30',
+    proficiency: 95
   },
   {
     id: 'tool7',
@@ -109,7 +115,8 @@ const cyberSecurityTools = [
     description: 'Network perimeter protection and filtering',
     color: 'text-electric-blue',
     bgColor: 'bg-electric-blue/10',
-    borderColor: 'border-electric-blue/30'
+    borderColor: 'border-electric-blue/30',
+    proficiency: 87
   },
   {
     id: 'tool8',
@@ -119,7 +126,8 @@ const cyberSecurityTools = [
     description: 'Network mapper and port scanner',
     color: 'text-terminal-green',
     bgColor: 'bg-terminal-green/10',
-    borderColor: 'border-terminal-green/30'
+    borderColor: 'border-terminal-green/30',
+    proficiency: 90
   },
   {
     id: 'tool9',
@@ -129,7 +137,8 @@ const cyberSecurityTools = [
     description: 'Penetration testing framework',
     color: 'text-terminal-red',
     bgColor: 'bg-terminal-red/10',
-    borderColor: 'border-terminal-red/30'
+    borderColor: 'border-terminal-red/30',
+    proficiency: 85
   },
   {
     id: 'tool10',
@@ -139,7 +148,8 @@ const cyberSecurityTools = [
     description: 'Web application security scanner',
     color: 'text-electric-purple',
     bgColor: 'bg-electric-purple/10',
-    borderColor: 'border-electric-purple/30'
+    borderColor: 'border-electric-purple/30',
+    proficiency: 82
   },
   {
     id: 'tool11',
@@ -149,7 +159,8 @@ const cyberSecurityTools = [
     description: 'Windows automation and scripting',
     color: 'text-electric-blue',
     bgColor: 'bg-electric-blue/10',
-    borderColor: 'border-electric-blue/30'
+    borderColor: 'border-electric-blue/30',
+    proficiency: 78
   },
   {
     id: 'tool12',
@@ -159,7 +170,8 @@ const cyberSecurityTools = [
     description: 'Vulnerability scanner and assessment tool',
     color: 'text-terminal-yellow',
     bgColor: 'bg-terminal-yellow/10',
-    borderColor: 'border-terminal-yellow/30'
+    borderColor: 'border-terminal-yellow/30',
+    proficiency: 88
   }
 ];
 
@@ -171,7 +183,29 @@ const nonTechnicalSkillsData = [ // Added ids
 ];
 
 const Skills = () => {
-  const [selectedTool, setSelectedTool] = useState<string | null>(null);
+
+  // Group tools by category
+  const groupedTools = cyberSecurityTools.reduce((acc, tool) => {
+    if (!acc[tool.category]) {
+      acc[tool.category] = [];
+    }
+    acc[tool.category].push(tool);
+    return acc;
+  }, {} as Record<string, typeof cyberSecurityTools>);
+
+  const categoryColors = {
+    'Network Analysis': 'text-terminal-green',
+    'SIEM': 'text-electric-blue',
+    'Web Security': 'text-terminal-red',
+    'Penetration Testing': 'text-electric-purple',
+    'Scripting': 'text-terminal-yellow',
+    'Security Monitoring': 'text-terminal-green',
+    'Network Security': 'text-electric-blue',
+    'Network Discovery': 'text-terminal-green',
+    'Exploitation': 'text-terminal-red',
+    'Automation': 'text-electric-blue',
+    'Vulnerability Assessment': 'text-terminal-yellow'
+  };
 
   return (
     <section id="skills" className="py-20 bg-background-dark relative overflow-hidden">
@@ -195,30 +229,43 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        {/* Cybersecurity Tools Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16"
-        >
-          {cyberSecurityTools.map((tool, index) => (
-            <motion.div
-              key={tool.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.05, 
-                y: -5,
-                transition: { duration: 0.2 }
-              }}
-              onHoverStart={() => setSelectedTool(tool.id)}
-              onHoverEnd={() => setSelectedTool(null)}
-              className={`cyber-card p-6 text-center cursor-pointer group relative overflow-hidden ${tool.bgColor} ${tool.borderColor} border-2`}
-            >
+        {/* Cybersecurity Tools - All Categories Combined */}
+        <div className="max-w-7xl mx-auto">
+          {/* Category Headers */}
+          <div className="mb-8">
+            {Object.entries(groupedTools).map(([category, tools], categoryIndex) => (
+              <motion.div
+                key={category}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+                viewport={{ once: true }}
+                className="inline-block mr-8 mb-4"
+              >
+                <h3 className={`text-lg font-cyber ${categoryColors[category as keyof typeof categoryColors]} mb-1`}>
+                  {category}
+                </h3>
+                <div className="h-0.5 bg-gradient-to-r from-terminal-green via-electric-blue to-electric-purple w-24"></div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* All Tools in One Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            {cyberSecurityTools.map((tool, index) => (
+              <motion.div
+                key={tool.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -2,
+                  transition: { duration: 0.2 }
+                }}
+                className={`cyber-card p-4 text-center cursor-pointer group relative overflow-hidden h-full flex flex-col ${tool.bgColor} ${tool.borderColor} border-2`}
+              >
               {/* Glow effect on hover */}
               <motion.div
                 className={`absolute inset-0 ${tool.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
@@ -227,58 +274,49 @@ const Skills = () => {
                 }}
               />
               
-              <div className="relative z-10">
-                <motion.div
-                  className={`${tool.color} mb-4 group-hover:scale-110 transition-transform duration-300`}
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  {tool.icon}
-                </motion.div>
-                
-                <h3 className="text-lg font-cyber text-primary-dark mb-2 group-hover:text-terminal-green transition-colors duration-300">
-                  {tool.name}
-                </h3>
-                
-                <p className="text-sm text-electric-blue font-semibold mb-3">
-                  {tool.category}
-                </p>
-                
-                {/* ASCII Progress Bar */}
-                <div className="mb-3">
-                  <div className="flex items-center justify-between text-xs text-terminal-green font-mono mb-1">
-                    <span>PROFICIENCY</span>
-                    <span>{Math.floor(Math.random() * 30 + 70)}%</span>
-                  </div>
-                  <div className="w-full bg-background-dark/50 rounded-full h-2 border border-terminal-green/30">
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-terminal-green to-electric-blue rounded-full"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${Math.floor(Math.random() * 30 + 70)}%` }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    />
-                  </div>
-                  <div className="text-xs text-terminal-green font-mono mt-1">
-                    ████████████████████░░░░
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex-grow">
+                  <motion.div
+                    className={`${tool.color} mb-2 group-hover:scale-110 transition-transform duration-300`}
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <div className="h-6 w-6 mx-auto">
+                      {tool.icon}
+                    </div>
+                  </motion.div>
+                  
+                  <h3 className="text-sm font-cyber text-primary-dark mb-1 group-hover:text-terminal-green transition-colors duration-300">
+                    {tool.name}
+                  </h3>
+                  
+                  <p className="text-xs text-electric-blue font-semibold mb-2">
+                    {tool.category}
+                  </p>
+                  
+                  {/* Skill Level Bar */}
+                  <div className="mb-2">
+                    <div className="flex items-center justify-between text-xs text-terminal-green font-mono mb-1">
+                      <span>SKILL</span>
+                      <span>{tool.proficiency}%</span>
+                    </div>
+                    <div className="w-full bg-background-dark/50 rounded-full h-1.5 border border-terminal-green/30">
+                      <motion.div
+                        className="h-full bg-gradient-to-r from-terminal-green to-electric-blue rounded-full"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${tool.proficiency}%` }}
+                        transition={{ duration: 1, delay: index * 0.05 }}
+                        viewport={{ once: true }}
+                      />
+                    </div>
                   </div>
                 </div>
                 
-                <motion.p
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ 
-                    opacity: selectedTool === tool.id ? 1 : 0,
-                    height: selectedTool === tool.id ? 'auto' : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="text-xs text-secondary-dark leading-relaxed overflow-hidden"
-                >
-                  {tool.description}
-                </motion.p>
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </div>
+        </div>
 
         {/* Professional Skills */}
         <motion.div
@@ -286,16 +324,16 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="cyber-card p-8"
+          className="max-w-7xl mx-auto"
         >
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-cyber text-terminal-green mb-4">Professional Strengths</h3>
-            <p className="text-primary-dark">
+          <div className="text-center mb-6">
+            <h3 className="text-xl font-cyber text-terminal-green mb-2">Professional Strengths</h3>
+            <p className="text-sm text-primary-dark">
               Core competencies that drive my success in cybersecurity roles
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {nonTechnicalSkillsData.map((skill, index) => (
               <motion.div
                 key={skill.id}
@@ -303,15 +341,17 @@ const Skills = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="bg-terminal-green/10 border border-terminal-green/20 rounded-lg p-4 text-center group hover:shadow-cyber transition-all duration-300"
+                whileHover={{ scale: 1.02, y: -2 }}
+                className="cyber-card p-4 text-center group relative overflow-hidden h-full flex flex-col bg-terminal-green/10 border-terminal-green/20 border-2"
               >
-                <div className="text-terminal-green mb-2 group-hover:text-electric-blue transition-colors duration-300">
-                  <ShieldCheckIcon className="h-6 w-6 mx-auto" />
+                <div className="flex-grow flex flex-col justify-center">
+                  <div className="text-terminal-green mb-2 group-hover:text-electric-blue transition-colors duration-300">
+                    <ShieldCheckIcon className="h-5 w-5 mx-auto" />
+                  </div>
+                  <p className="text-xs font-medium text-primary-dark group-hover:text-terminal-green transition-colors duration-300 leading-tight">
+                    {skill.name}
+                  </p>
                 </div>
-                <p className="text-sm font-medium text-primary-dark group-hover:text-terminal-green transition-colors duration-300">
-                  {skill.name}
-                </p>
               </motion.div>
             ))}
           </div>
