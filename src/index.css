@@ -1,91 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles - Dark mode only */
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    /* Apply Inter font if not globally set by Tailwind config */
-    font-family: 'Inter', sans-serif;
+  * {
+    @apply border-gray-700;
   }
 
   body {
-    @apply bg-background-light dark:bg-background-dark text-primary-light dark:text-primary-dark transition-colors duration-300 ease-in-out;
+    @apply bg-background-dark text-primary-dark;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
   }
-
-  ::selection {
-    @apply bg-accent-light/30 dark:bg-accent-dark/30; /* Slightly increased opacity for selection */
-  }
-
-  /* Optional: Global heading styles if needed, assuming font-sans from Tailwind config handles Inter */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-sans; /* Ensures Inter is applied if specified as default sans font */
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
 
+/* Component styles */
 @layer components {
-  .section-title {
-    @apply text-3xl font-bold mb-8 text-accent-light dark:text-accent-dark; /* Updated margin and colors */
+  /* Cyberpunk text effects */
+  .cyber-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-terminal-green via-electric-blue to-electric-purple;
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
   }
   
-  .card {
-    /* Using new card colors from tailwind.config.js */
-    @apply bg-card-light dark:bg-card-dark rounded-lg shadow-lg p-6 transition-all duration-300 ease-in-out hover:shadow-xl; 
+  .neon-glow-green {
+    @apply shadow-lg;
+    box-shadow: 0 0 5px rgba(57, 255, 20, 0.5), 0 0 10px rgba(57, 255, 20, 0.3), 0 0 15px rgba(57, 255, 20, 0.2);
   }
   
+  .neon-glow-blue {
+    @apply shadow-lg;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3), 0 0 15px rgba(0, 255, 255, 0.2);
+  }
+  
+  .neon-glow-purple {
+    @apply shadow-lg;
+    box-shadow: 0 0 5px rgba(138, 43, 226, 0.5), 0 0 10px rgba(138, 43, 226, 0.3), 0 0 15px rgba(138, 43, 226, 0.2);
+  }
+  
+  /* Terminal styles */
+  .terminal {
+    @apply bg-card-dark border border-terminal-green/30 rounded-lg p-6 font-mono;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+    backdrop-filter: blur(10px);
+  }
+  
+  .terminal-header {
+    @apply flex items-center mb-4 pb-2 border-b border-terminal-green/20;
+  }
+  
+  .terminal-button {
+    @apply w-3 h-3 rounded-full mr-2;
+  }
+  
+  .terminal-button.red {
+    @apply bg-terminal-red;
+  }
+  
+  .terminal-button.yellow {
+    @apply bg-terminal-yellow;
+  }
+  
+  .terminal-button.green {
+    @apply bg-terminal-green;
+  }
+  
+  .terminal-text {
+    @apply text-sm leading-relaxed;
+  }
+  
+  /* Button styles */
   .btn {
-    @apply px-4 py-2 rounded-md transition-all duration-300 ease-in-out font-medium; /* Updated duration and easing */
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 transform;
   }
   
   .btn-primary {
-    /* Using new accent colors, text-white should still provide good contrast */
-    @apply bg-accent-light dark:bg-accent-dark text-white hover:opacity-90; 
+    @apply bg-terminal-green text-background-dark hover:bg-terminal-green/90;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-background-dark;
+  }
+
+  .btn-tertiary {
+    @apply bg-transparent border-2 border-electric-purple text-electric-purple hover:bg-electric-purple hover:text-background-dark;
   }
   
+  /* Navigation styles */
   .nav-link {
-    /* Using new primary and accent colors */
-    @apply text-primary-light dark:text-primary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-200 ease-in-out;
+    @apply text-primary-dark hover:text-terminal-green transition-colors duration-300;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-card-dark border border-terminal-green/20 rounded-xl p-6 backdrop-blur-sm;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+  }
+  
+  .cyber-card {
+    @apply bg-card-dark border border-terminal-green/20 rounded-xl p-6 backdrop-blur-sm;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+  }
+
+  /* Matrix background */
+  .matrix-bg {
+    @apply fixed inset-0 pointer-events-none overflow-hidden;
+    z-index: -1;
+  }
+  
+  /* Cyber grid background */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(57, 255, 20, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Glitch effect */
+  .glitch {
+    position: relative;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: #ff073a;
+    z-index: -1;
+  }
+
+  .glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: #00ffff;
+    z-index: -2;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply w-12 h-12 border-4 border-terminal-green/30 border-t-terminal-green rounded-full;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-terminal-green/50 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-terminal-green/70;
+  }
+  
+  /* Selection styles */
+  ::selection {
+    @apply bg-terminal-green/30 text-terminal-green;
+  }
+  
+  ::-moz-selection {
+    @apply bg-terminal-green/30 text-terminal-green;
+  }
+
+  /* Flip Card styles */
+  .flip-card {
+    @apply relative w-full h-64;
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    @apply relative w-full h-full text-center transition-transform;
+    transition-duration: 600ms;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    @apply absolute w-full h-full;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
   }
 }
 
-/* Custom Animations (keeping existing) */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
+/* Utility styles */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  50% {
-    transform: translateY(-10px);
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-  100% {
-    transform: translateY(0px);
+  
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Section title */
+  .section-title {
+    @apply text-4xl font-cyber font-bold cyber-text;
   }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Smooth Scrolling (keeping existing) */
-html {
-  scroll-behavior: smooth;
+@keyframes glitch-1 {
+  0%, 14%, 15%, 49%, 50%, 99%, 100% {
+    transform: translate(0);
+  }
+  15%, 49% {
+    transform: translate(-2px, 2px);
+  }
 }
 
-/* Custom Scrollbar (updated to use new color palette) */
-::-webkit-scrollbar {
-  width: 8px;
+@keyframes glitch-2 {
+  0%, 20%, 21%, 62%, 63%, 99%, 100% {
+    transform: translate(0);
+  }
+  21%, 62% {
+    transform: translate(2px, -2px);
+  }
 }
 
-::-webkit-scrollbar-track {
-  /* Using a very subtle version of the secondary color for the track */
-  @apply bg-secondary-light/10 dark:bg-secondary-dark/5; 
+/* Responsive design */
+@media (max-width: 768px) {
+  .terminal {
+    @apply p-4 text-sm;
+  }
+  
+  .btn {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .card {
+    @apply p-4;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  /* Using accent color for the thumb */
-  @apply bg-accent-light/40 dark:bg-accent-dark/40 rounded-full;
+/* Print styles */
+@media print {
+  .matrix-bg,
+  .cyber-grid {
+    display: none;
+  }
+  
+  .terminal {
+    @apply bg-white text-black border border-gray-300;
+  }
+  
+  .btn {
+    @apply bg-gray-200 text-black border border-gray-400;
+  }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  /* Darken/lighten accent color on hover */
-  @apply bg-accent-light/60 dark:bg-accent-dark/60;
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .terminal {
+    @apply border-2 border-terminal-green;
+  }
+  
+  .btn {
+    @apply border-2;
+  }
+  
+  .card {
+    @apply border-2 border-terminal-green/50;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .matrix-bg {
+    display: none;
+  }
 }
