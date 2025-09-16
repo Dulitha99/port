@@ -12,7 +12,8 @@ import {
   GlobeAltIcon,
   KeyIcon,
   FireIcon,
-  WrenchScrewdriverIcon
+  WrenchScrewdriverIcon,
+  EnvelopeIcon
 } from '@heroicons/react/24/outline';
 
 // Animation Variants
@@ -172,6 +173,72 @@ const cyberSecurityTools = [
     bgColor: 'bg-terminal-yellow/10',
     borderColor: 'border-terminal-yellow/30',
     proficiency: 88
+  },
+  {
+    id: 'tool13',
+    name: 'CrowdStrike XDR',
+    category: 'Security Monitoring',
+    icon: <EyeIcon className="h-8 w-8" />,
+    description: 'Extended Detection and Response platform',
+    color: 'text-terminal-green',
+    bgColor: 'bg-terminal-green/10',
+    borderColor: 'border-terminal-green/30',
+    proficiency: 93
+  },
+  {
+    id: 'tool14',
+    name: 'Microsoft Defender',
+    category: 'Security Monitoring',
+    icon: <ShieldCheckIcon className="h-8 w-8" />,
+    description: 'Microsoft endpoint security and threat protection',
+    color: 'text-electric-blue',
+    bgColor: 'bg-electric-blue/10',
+    borderColor: 'border-electric-blue/30',
+    proficiency: 90
+  },
+  {
+    id: 'tool15',
+    name: 'Entra ID',
+    category: 'Identity Management',
+    icon: <KeyIcon className="h-8 w-8" />,
+    description: 'Microsoft identity and access management',
+    color: 'text-electric-blue',
+    bgColor: 'bg-electric-blue/10',
+    borderColor: 'border-electric-blue/30',
+    proficiency: 85
+  },
+  {
+    id: 'tool16',
+    name: 'Mimecast',
+    category: 'Email Security',
+    icon: <EnvelopeIcon className="h-8 w-8" />,
+    description: 'Email security and threat protection platform',
+    color: 'text-terminal-red',
+    bgColor: 'bg-terminal-red/10',
+    borderColor: 'border-terminal-red/30',
+    proficiency: 87
+  },
+  {
+    id: 'tool17',
+    name: 'GitHub',
+    category: 'Development',
+    icon: <CodeBracketIcon className="h-8 w-8" />,
+    description: 'Version control and collaborative development platform',
+    color: 'text-terminal-yellow',
+    bgColor: 'bg-terminal-yellow/10',
+    borderColor: 'border-terminal-yellow/30',
+    proficiency: 82
+  },
+  {
+    id: 'tool18',
+    name: 'Prisma Access',
+    category: 'Network Security',
+    icon: <GlobeAltIcon className="h-8 w-8" />,
+    description: 'Cloud-delivered security service edge',
+    color: 'text-electric-purple',
+    bgColor: 'bg-electric-purple/10',
+    borderColor: 'border-electric-purple/30',
+    proficiency: 89
   }
 ];
 
@@ -204,7 +271,10 @@ const Skills = () => {
     'Network Discovery': 'text-terminal-green',
     'Exploitation': 'text-terminal-red',
     'Automation': 'text-electric-blue',
-    'Vulnerability Assessment': 'text-terminal-yellow'
+    'Vulnerability Assessment': 'text-terminal-yellow',
+    'Identity Management': 'text-electric-blue',
+    'Email Security': 'text-terminal-red',
+    'Development': 'text-terminal-yellow'
   };
 
   return (
@@ -317,6 +387,9 @@ const Skills = () => {
             ))}
           </div>
         </div>
+
+        {/* Spacing between sections */}
+        <div className="mb-16"></div>
 
         {/* Professional Skills */}
         <motion.div
