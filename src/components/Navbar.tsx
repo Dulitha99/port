@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from 'react'; // Added useEffect
-import { motion, AnimatePresence } from 'framer-motion'; // Added AnimatePresence
-import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline'; // Added SunIcon, MoonIcon
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useTheme } from '../contexts/ThemeContext';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false); // Dark mode state
-
-  // useEffect for theme toggling
-  useEffect(() => {
-    const isDarkModePreferred = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(isDarkModePreferred);
-  }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('darkMode', 'true');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('darkMode', 'false');
-    }
-  }, [darkMode]);
+  const { theme } = useTheme();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -68,57 +54,13 @@ const Navbar = () => {
                 />
               </motion.a>
             ))}
-            {/* Dark Mode Toggle Button */}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-full hover:bg-accent-light/10 dark:hover:bg-accent-dark/10 transition-colors"
-              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              <AnimatePresence mode="wait">
-                {darkMode ? (
-                  <motion.div
-                    key="sun"
-                    initial={{ opacity: 0, rotate: -90, scale: 0.75 }}
-                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                    exit={{ opacity: 0, rotate: 90, scale: 0.75 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <SunIcon className="h-5 w-5 text-yellow-400" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="moon"
-                    initial={{ opacity: 0, rotate: 90, scale: 0.75 }}
-                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                    exit={{ opacity: 0, rotate: -90, scale: 0.75 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <MoonIcon className="h-5 w-5 text-primary-light dark:text-primary-dark" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </button>
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Navigation Button & Theme Toggle */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-full hover:bg-accent-light/10 dark:hover:bg-accent-dark/10 transition-colors mr-2"
-              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              <AnimatePresence mode="wait">
-                {darkMode ? (
-                  <motion.div key="sun-mobile" initial={{ opacity: 0, scale:0.8 }} animate={{ opacity: 1, scale:1 }} exit={{ opacity: 0, scale:0.8 }} transition={{duration:0.2}}>
-                    <SunIcon className="h-5 w-5 text-yellow-400" />
-                  </motion.div>
-                ) : (
-                  <motion.div key="moon-mobile" initial={{ opacity: 0, scale:0.8 }} animate={{ opacity: 1, scale:1 }} exit={{ opacity: 0, scale:0.8 }} transition={{duration:0.2}}>
-                    <MoonIcon className="h-5 w-5 text-primary-light dark:text-primary-dark" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </button>
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-primary-light dark:text-primary-dark hover:bg-accent-light/10 dark:hover:bg-accent-dark/10"
