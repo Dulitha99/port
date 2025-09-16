@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
-import LoadingSpinner from './components/LoadingSpinner';
+import TerminalLoader from './components/TerminalLoader';
 import ErrorBoundary from './components/ErrorBoundary';
 import SEO from './components/SEO';
 import AdminLogin from './components/AdminLogin';
@@ -90,7 +90,7 @@ function App() {
                     className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
                     exit={{ opacity: 0, transition: { duration: 0.5 } }}
                   >
-                    <LoadingSpinner />
+                    <TerminalLoader />
                   </motion.div>
                 )}
               </AnimatePresence>

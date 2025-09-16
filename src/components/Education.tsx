@@ -35,27 +35,27 @@ const educationData = [ // Renamed and added id/logo
 
 const Education = () => {
   return (
-    <section id="education" className="py-16 bg-background-light dark:bg-background-dark"> {/* Adjusted padding */}
+    <section id="education" className="py-16 bg-background-dark">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }} // Slightly longer duration
-          viewport={{ once: true, amount: 0.3 }} // Trigger when 30% visible
-          className="text-center mb-16" // Centered title area, more bottom margin
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center justify-center mb-4"> {/* Wrapper for icon and title */}
-            <AcademicCapIcon className="h-10 w-10 text-accent-light dark:text-accent-dark mr-3" /> {/* Larger icon, margin right */}
-            <h2 className="text-4xl font-bold text-primary-light dark:text-primary-dark">Education</h2> {/* Updated h2 style */}
+          <div className="inline-flex items-center justify-center mb-4">
+            <AcademicCapIcon className="h-10 w-10 text-terminal-green mr-3" />
+            <h2 className="text-4xl font-cyber font-bold cyber-text">Education</h2>
           </div>
-          <p className="text-lg text-secondary-light dark:text-secondary-dark max-w-2xl mx-auto"> {/* Subtitle */}
+          <p className="text-lg text-secondary-dark max-w-2xl mx-auto">
             My academic background and qualifications.
           </p>
         </motion.div>
 
         <div className="relative max-w-3xl mx-auto"> {/* Timeline container */}
           {/* The vertical timeline bar */}
-          <div className="absolute left-6 sm:left-8 top-0 h-full w-0.5 bg-accent-light/30 dark:bg-accent-dark/30 rounded-full"></div>
+          <div className="absolute left-6 sm:left-8 top-0 h-full w-0.5 bg-gradient-to-b from-terminal-green via-electric-blue to-electric-purple rounded-full"></div>
 
             {educationData.map((edu, index) => ( 
               <motion.div
@@ -69,9 +69,9 @@ const Education = () => {
                 {/* Timeline Node (Circle with Logo) - Positioned relative to the line */}
                 <div 
                   className="absolute left-6 sm:left-8 top-1 transform -translate-x-1/2 
-                             w-12 h-12 sm:w-16 sm:h-16 bg-card-light dark:bg-card-dark rounded-full 
-                             border-4 border-accent-light dark:border-accent-dark 
-                             flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 z-10" // Added z-10 and updated left positioning
+                             w-12 h-12 sm:w-16 sm:h-16 bg-card-dark rounded-full 
+                             border-4 border-terminal-green 
+                             flex items-center justify-center shadow-cyber group-hover:scale-110 transition-transform duration-300 z-10"
                 >
                   <img 
                     src={edu.logo} 
@@ -81,18 +81,18 @@ const Education = () => {
                 </div>
 
                 {/* Content Card - Now needs its own left margin/padding to clear the node */}
-                <div className="ml-16 sm:ml-20 bg-card-light dark:bg-card-dark p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-accent-light dark:text-accent-dark mb-1">
+                <div className="ml-16 sm:ml-20 cyber-card p-6">
+                  <h3 className="text-xl sm:text-2xl font-cyber font-semibold text-terminal-green mb-1">
                     {edu.degree}
                   </h3>
-                  <p className="text-md sm:text-lg font-medium text-primary-light dark:text-primary-dark mb-1">
+                  <p className="text-md sm:text-lg font-medium text-primary-dark mb-1">
                     {edu.institution}
                   </p>
-                  <p className="text-xs sm:text-sm text-secondary-light dark:text-secondary-dark mb-4">
+                  <p className="text-xs sm:text-sm text-secondary-dark mb-4">
                     {edu.period}
                   </p>
                   {edu.details && edu.details.length > 0 && (
-                    <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-primary-light dark:text-primary-dark text-opacity-90 dark:text-opacity-90">
+                    <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-primary-dark">
                       {edu.details.map((detail, idx) => (
                         <li key={idx} className="leading-relaxed">{detail}</li>
                       ))}
@@ -100,8 +100,8 @@ const Education = () => {
                   )}
                   {edu.nonAcademic && edu.nonAcademic.length > 0 && (
                     <div className="mt-4">
-                      <h4 className="text-lg font-semibold text-accent-light dark:text-accent-dark mb-2">Non Academic</h4>
-                      <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-primary-light dark:text-primary-dark text-opacity-90 dark:text-opacity-90">
+                      <h4 className="text-lg font-semibold text-electric-blue mb-2">Non Academic</h4>
+                      <ul className="list-disc list-inside space-y-1.5 text-sm sm:text-base text-primary-dark">
                         {edu.nonAcademic.map((item, idx) => (
                           <li key={idx} className="leading-relaxed">{item}</li>
                         ))}

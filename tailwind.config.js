@@ -7,49 +7,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Light theme colors
-        'primary-light': '#1A1A1A',     // Dark gray for text
-        'secondary-light': '#6B7280',   // Medium gray
-        'accent-light': '#3B82F6',      // Blue accent
-        'background-light': '#FFFFFF',  // White background
-        'card-light': '#F8F9FA',        // Light gray cards
-        
-        // Dark theme colors (cyberpunk)
+        // Cyberpunk colors only
         'primary-dark': '#E0E0E0',      // Light gray
         'secondary-dark': '#BDBDBD',    // Medium gray
         'accent-dark': '#39FF14',       // Neon green
         'background-dark': '#0A0A0A',   // Pure black
         'card-dark': '#1A1A1A',         // Dark charcoal
         
-        // Cyberpunk accent colors (work in both themes)
+        // Cyberpunk accent colors
         'terminal-green': '#39FF14',    // Neon green
-        'terminal-red': '#FF073A',      // Terminal red
+        'terminal-red': '#FF3131',      // Alert red
         'terminal-yellow': '#FFD700',   // Terminal yellow
         'terminal-blue': '#00FFFF',     // Terminal blue
         'electric-blue': '#00FFFF',     // Electric blue
         'electric-purple': '#8A2BE2',   // Deep purple
         
-        // Semantic colors
-        primary: {
-          light: '#1A1A1A',
-          dark: '#E0E0E0',
-        },
-        secondary: {
-          light: '#6B7280',
-          dark: '#BDBDBD',
-        },
-        accent: {
-          light: '#3B82F6',
-          dark: '#39FF14',
-        },
-        background: {
-          light: '#FFFFFF',
-          dark: '#0A0A0A',
-        },
-        card: {
-          light: '#F8F9FA',
-          dark: '#1A1A1A',
-        }
+        // Semantic colors (dark mode only)
+        primary: '#E0E0E0',
+        secondary: '#BDBDBD',
+        accent: '#39FF14',
+        background: '#0A0A0A',
+        card: '#1A1A1A',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

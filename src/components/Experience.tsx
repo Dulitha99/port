@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   BriefcaseIcon, 
   CalendarIcon, 
   MapPinIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
   ShieldCheckIcon,
   CodeBracketIcon,
   EyeIcon,
@@ -114,18 +112,6 @@ const experiencesData = [
 ];
 
 const Experience = () => {
-  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
-
-  const toggleCard = (id: number) => {
-    const newExpanded = new Set(expandedCards);
-    if (newExpanded.has(id)) {
-      newExpanded.delete(id);
-    } else {
-      newExpanded.add(id);
-    }
-    setExpandedCards(newExpanded);
-  };
-
   const getStatusColor = (status: string | undefined) => {
     switch (status) {
       case 'Current': return 'text-terminal-green bg-terminal-green/20';
@@ -135,9 +121,9 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-20 bg-background-light dark:bg-background-dark relative overflow-hidden">
+    <section id="experience" className="py-20 bg-background-dark relative overflow-hidden">
       {/* Cyber Grid Background */}
-      <div className="absolute inset-0 cyber-grid dark:opacity-10 opacity-5"></div>
+      <div className="absolute inset-0 cyber-grid opacity-10"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -151,7 +137,7 @@ const Experience = () => {
             <BriefcaseIcon className="h-12 w-12 text-terminal-green mr-4" />
             <h2 className="section-title">Professional Experience</h2>
           </div>
-          <p className="text-lg text-primary-light dark:text-primary-dark max-w-3xl mx-auto">
+          <p className="text-lg text-primary-dark max-w-3xl mx-auto">
             My cybersecurity journey across different organizations, showcasing expertise in SOC operations, 
             threat hunting, and security analysis.
           </p>
@@ -162,8 +148,6 @@ const Experience = () => {
           <div className="absolute left-8 top-0 h-full w-0.5 bg-gradient-to-b from-terminal-green via-electric-blue to-electric-purple rounded-full"></div>
 
           {experiencesData.map((exp, index) => {
-            const isExpanded = expandedCards.has(exp.id);
-            
             return (
               <motion.div
                 key={exp.id}
@@ -176,7 +160,7 @@ const Experience = () => {
                 {/* Timeline Node */}
                 <motion.div 
                   className="absolute left-8 top-6 transform -translate-x-1/2 
-                           w-16 h-16 bg-card-light dark:bg-card-dark rounded-full 
+                           w-16 h-16 bg-card-dark rounded-full 
                              border-4 border-terminal-green 
                            flex items-center justify-center shadow-cyber group-hover:scale-110 transition-all duration-300 z-10"
                   whileHover={{ rotate: 360 }}
@@ -191,8 +175,7 @@ const Experience = () => {
 
                 {/* Experience Card */}
                 <motion.div 
-                  className="ml-20 cyber-card p-6 cursor-pointer"
-                  onClick={() => toggleCard(exp.id)}
+                  className="ml-20 cyber-card p-6"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -200,14 +183,14 @@ const Experience = () => {
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
                       <h3 className="text-xl font-cyber text-terminal-green mb-2 group-hover:text-electric-blue transition-colors duration-300">
-                    {exp.role}
-                  </h3>
-                      <p className="text-lg font-semibold text-primary-light dark:text-primary-dark mb-2">
-                    {exp.company}
-                  </p>
+                        {exp.role}
+                      </h3>
+                      <p className="text-lg font-semibold text-primary-dark mb-2">
+                        {exp.company}
+                      </p>
                       
                       {/* Meta Information */}
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-secondary-light dark:text-secondary-dark mb-4">
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-secondary-dark mb-4">
                         <div className="flex items-center space-x-1">
                           <CalendarIcon className="h-4 w-4 text-terminal-green" />
                           <span>{exp.period}</span>
@@ -221,18 +204,6 @@ const Experience = () => {
                         </span>
                       </div>
                     </div>
-                    
-                    <motion.button
-                      className="p-2 rounded-lg bg-terminal-green/10 hover:bg-terminal-green/20 transition-colors duration-300"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      {isExpanded ? (
-                        <ChevronUpIcon className="h-5 w-5 text-terminal-green" />
-                      ) : (
-                        <ChevronDownIcon className="h-5 w-5 text-terminal-green" />
-                      )}
-                    </motion.button>
                   </div>
 
                   {/* Technologies */}
@@ -253,82 +224,72 @@ const Experience = () => {
                     </div>
                   </div>
 
-                  {/* Expandable Content */}
-                  <motion.div
-                    initial={false}
-                    animate={{ 
-                      height: isExpanded ? 'auto' : 0,
-                      opacity: isExpanded ? 1 : 0
-                    }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <div className="space-y-4">
-                      {/* Introduction */}
-                      {exp.intro && (
-                        <div>
-                          <div className="flex items-center space-x-2 mb-2">
-                            <ShieldCheckIcon className="h-4 w-4 text-terminal-green" />
-                            <span className="text-sm font-semibold text-terminal-green">Role Overview:</span>
-                          </div>
-                          <p className="text-sm text-primary-light dark:text-primary-dark leading-relaxed">
-                            {exp.intro}
-                          </p>
+                  {/* Content */}
+                  <div className="space-y-4">
+                    {/* Introduction */}
+                    {exp.intro && (
+                      <div>
+                        <div className="flex items-center space-x-2 mb-2">
+                          <ShieldCheckIcon className="h-4 w-4 text-terminal-green" />
+                          <span className="text-sm font-semibold text-terminal-green">Role Overview:</span>
                         </div>
-                      )}
+                        <p className="text-sm text-primary-dark leading-relaxed">
+                          {exp.intro}
+                        </p>
+                      </div>
+                    )}
 
-                      {/* Key Responsibilities */}
+                    {/* Key Responsibilities */}
+                    <div>
+                      <div className="flex items-center space-x-2 mb-3">
+                        <EyeIcon className="h-4 w-4 text-electric-blue" />
+                        <span className="text-sm font-semibold text-electric-blue">Key Responsibilities:</span>
+                      </div>
+                      <ul className="space-y-2">
+                        {exp.responsibilities.map((resp, idx) => (
+                          <motion.li 
+                            key={idx} 
+                            className="flex items-start space-x-2 text-sm text-primary-dark leading-relaxed"
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: idx * 0.1 }}
+                          >
+                            <span className="text-terminal-green mt-1">▸</span>
+                            <span>{resp}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Achievements */}
+                    {exp.achievements && (
                       <div>
                         <div className="flex items-center space-x-2 mb-3">
-                          <EyeIcon className="h-4 w-4 text-electric-blue" />
-                          <span className="text-sm font-semibold text-electric-blue">Key Responsibilities:</span>
+                          <BugAntIcon className="h-4 w-4 text-electric-purple" />
+                          <span className="text-sm font-semibold text-electric-purple">Key Achievements:</span>
                         </div>
                         <ul className="space-y-2">
-                    {exp.responsibilities.map((resp, idx) => (
+                          {exp.achievements.map((achievement, idx) => (
                             <motion.li 
                               key={idx} 
-                              className="flex items-start space-x-2 text-sm text-primary-light dark:text-primary-dark leading-relaxed"
+                              className="flex items-start space-x-2 text-sm text-primary-dark leading-relaxed"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: idx * 0.1 }}
                             >
-                              <span className="text-terminal-green mt-1">▸</span>
-                              <span>{resp}</span>
+                              <span className="text-electric-purple mt-1">★</span>
+                              <span>{achievement}</span>
                             </motion.li>
                           ))}
                         </ul>
                       </div>
-
-                      {/* Achievements */}
-                      {exp.achievements && (
-                        <div>
-                          <div className="flex items-center space-x-2 mb-3">
-                            <BugAntIcon className="h-4 w-4 text-electric-purple" />
-                            <span className="text-sm font-semibold text-electric-purple">Key Achievements:</span>
-                          </div>
-                          <ul className="space-y-2">
-                            {exp.achievements.map((achievement, idx) => (
-                              <motion.li 
-                                key={idx} 
-                                className="flex items-start space-x-2 text-sm text-primary-light dark:text-primary-dark leading-relaxed"
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: idx * 0.1 }}
-                              >
-                                <span className="text-electric-purple mt-1">★</span>
-                                <span>{achievement}</span>
-                              </motion.li>
-                    ))}
-                  </ul>
-                </div>
-                      )}
-                    </div>
-                  </motion.div>
+                    )}
+                  </div>
                 </motion.div>
               </motion.div>
             );
           })}
-          </div>
+        </div>
       </div>
     </section>
   );

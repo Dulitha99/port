@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useTheme } from '../contexts/ThemeContext';
-import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme } = useTheme();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -19,7 +16,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md shadow-sm"> {/* Updated z-index, blur, shadow */}
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background-dark/90 backdrop-blur-md border-b border-terminal-green/20 shadow-cyber">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <motion.div
@@ -27,48 +24,47 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <a href="#home" className="text-2xl font-bold text-accent-light dark:text-accent-dark"> {/* Increased font size slightly */}
-              DULITHA {/* Updated brand text */}
+            <a href="#home" className="text-2xl font-cyber font-bold text-terminal-green hover:text-electric-blue transition-colors duration-300">
+              DULITHA@CYBER:~$
             </a>
           </motion.div>
 
-          {/* Desktop Navigation & Theme Toggle */}
-          <div className="hidden md:flex items-center space-x-6"> {/* Reduced space-x */}
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="nav-link relative text-sm font-medium" // Added relative for underline, text-sm
+                className="nav-link relative text-sm font-mono font-medium group"
                 whileHover="hover"
                 initial="rest"
                 animate="rest"
               >
+                <span className="text-terminal-green">[</span>
                 {item.name}
+                <span className="text-terminal-green">]</span>
                 <motion.div
                   variants={{
                     rest: { width: 0, opacity: 0 },
                     hover: { width: "100%", opacity: 1 }
                   }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="absolute bottom-0 left-0 h-0.5 bg-accent-light dark:bg-accent-dark"
+                  className="absolute bottom-0 left-0 h-0.5 bg-terminal-green shadow-glow"
                 />
               </motion.a>
             ))}
-            {/* Theme Toggle */}
-            <ThemeToggle />
           </div>
 
-          {/* Mobile Navigation Button & Theme Toggle */}
-          <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
+          {/* Mobile Navigation Button */}
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-primary-light dark:text-primary-dark hover:bg-accent-light/10 dark:hover:bg-accent-dark/10"
+              className="p-2 rounded-md text-primary-dark hover:bg-terminal-green/10 border border-terminal-green/20"
             >
               {isOpen ? (
-                <XMarkIcon className="h-6 w-6" />
+                <XMarkIcon className="h-6 w-6 text-terminal-green" />
               ) : (
-                <Bars3Icon className="h-6 w-6" />
+                <Bars3Icon className="h-6 w-6 text-terminal-green" />
               )}
             </button>
           </div>
@@ -82,22 +78,17 @@ const Navbar = () => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           style={{ overflow: 'hidden' }} 
         >
-          <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-card-dark/50 border border-terminal-green/20 rounded-lg mt-2">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 rounded-md text-base font-medium nav-link"
+                className="block px-3 py-2 rounded-md text-base font-mono font-medium nav-link hover:bg-terminal-green/10 transition-colors duration-300"
                 onClick={() => {
                   setIsOpen(false);
-                  // Optional: Smooth scroll to section after menu closes
-                  // const element = document.querySelector(item.href);
-                  // if (element) {
-                  //  setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 300); // Adjust delay if needed
-                  // }
                 }}
               >
-                {item.name}
+                <span className="text-terminal-green">$</span> {item.name}
               </a>
             ))}
           </div>

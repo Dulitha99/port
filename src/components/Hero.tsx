@@ -29,10 +29,35 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center pt-20 md:pt-24 bg-gradient-to-br from-background-light via-background-light/95 to-background-light/90 dark:from-background-dark dark:via-gray-900/50 dark:to-background-dark/80 relative overflow-hidden"
+      className="min-h-screen flex items-center pt-20 md:pt-24 bg-gradient-to-br from-background-dark via-gray-900/50 to-background-dark/80 relative overflow-hidden"
     >
       {/* Cyber Grid Background */}
-      <div className="absolute inset-0 cyber-grid dark:opacity-20 opacity-10"></div>
+      <div className="absolute inset-0 cyber-grid opacity-20"></div>
+      
+      {/* Matrix-style falling code */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-terminal-green/10 font-mono text-xs"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, window.innerHeight + 100],
+              opacity: [0, 0.3, 0],
+            }}
+            transition={{
+              duration: Math.random() * 8 + 6,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          >
+            {Math.random() > 0.5 ? '01' : '10'}
+          </motion.div>
+        ))}
+      </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10"> 
         <div className="max-w-6xl mx-auto">
@@ -112,7 +137,7 @@ const Hero = () => {
               animate="visible"
               custom={1}
               variants={textVariants}
-              className="text-lg text-primary-light dark:text-primary-dark leading-relaxed mb-8 max-w-4xl mx-auto"
+              className="text-lg text-primary-dark leading-relaxed mb-8 max-w-4xl mx-auto font-mono"
             >
               Specialized in <span className="text-terminal-green font-semibold">SOC operations</span>, 
               <span className="text-terminal-green font-semibold"> threat hunting</span>, and 

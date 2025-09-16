@@ -64,50 +64,122 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-background-light dark:bg-background-dark relative overflow-hidden">
+    <section id="about" className="py-20 bg-background-dark relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 cyber-grid opacity-5"></div>
+      <div className="absolute inset-0 cyber-grid opacity-10"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
+        {/* Terminal Window */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="terminal max-w-6xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center space-x-2 mb-6">
-            <ShieldCheckIcon className="h-10 w-10 text-terminal-green" />
-            <h2 className="section-title">About Me</h2>
+          {/* Terminal Header */}
+          <div className="terminal-header">
+            <div className="flex items-center space-x-2">
+              <div className="terminal-button red"></div>
+              <div className="terminal-button yellow"></div>
+              <div className="terminal-button green"></div>
+            </div>
+            <div className="flex-1 text-center">
+              <span className="text-sm font-mono text-terminal-green">dulitha@cybersecurity:~$ whoami</span>
+            </div>
           </div>
-          <p className="text-lg text-primary-light dark:text-primary-dark max-w-3xl mx-auto">
-            A dedicated cybersecurity professional with a passion for protecting digital assets and 
-            educating others about security best practices.
-          </p>
+
+          {/* Terminal Content */}
+          <div className="terminal-text space-y-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              viewport={{ once: true }}
+              className="flex items-center space-x-2"
+            >
+              <span className="text-terminal-green">$</span>
+              <span className="text-electric-blue">whoami</span>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.5 }}
+              viewport={{ once: true }}
+              className="ml-4 text-terminal-green font-mono"
+            >
+              Cyber Security Analyst | Ethical Hacker | Threat Hunter
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 0.5 }}
+              viewport={{ once: true }}
+              className="flex items-center space-x-2 mt-6"
+            >
+              <span className="text-terminal-green">$</span>
+              <span className="text-electric-blue">cat profile.txt</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 2, duration: 0.5 }}
+              viewport={{ once: true }}
+              className="ml-4 space-y-2 text-primary-dark font-mono text-sm"
+            >
+              <div>I am a cybersecurity professional with expertise in:</div>
+              <div className="ml-4">
+                <div>• <span className="text-terminal-green">SOC operations</span> - 24/7 security monitoring</div>
+                <div>• <span className="text-electric-blue">Threat hunting</span> - Proactive threat detection</div>
+                <div>• <span className="text-electric-purple">Penetration testing</span> - Vulnerability assessment</div>
+                <div>• <span className="text-terminal-green">Endpoint security</span> - Palo Alto Cortex XDR</div>
+              </div>
+              <div className="mt-4">
+                Passionate about safeguarding digital assets through innovative security strategies.
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
 
-        {/* Professional Summary */}
+        {/* Certifications Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="cyber-card mb-16"
+          className="mb-16"
         >
-          <h3 className="text-2xl font-cyber text-terminal-green mb-6">Professional Summary</h3>
-          <p className="text-lg leading-relaxed text-primary-light dark:text-primary-dark">
-            I am a cybersecurity professional with expertise in <span className="text-terminal-green font-semibold">SOC operations</span>, 
-            <span className="text-electric-blue font-semibold"> threat hunting</span>, 
-            <span className="text-electric-purple font-semibold"> endpoint security</span>, and 
-            <span className="text-terminal-green font-semibold"> penetration testing</span>. 
-            Skilled in Palo Alto Cortex XDR, Entra ID, Identity Protection, and email security. 
-            Passionate about safeguarding digital assets through innovative security strategies. 
-            Strong team player with excellent problem-solving and communication skills.
-          </p>
+          <div className="terminal max-w-6xl mx-auto">
+            <div className="terminal-header">
+              <div className="flex items-center space-x-2">
+                <div className="terminal-button red"></div>
+                <div className="terminal-button yellow"></div>
+                <div className="terminal-button green"></div>
+              </div>
+              <div className="flex-1 text-center">
+                <span className="text-sm font-mono text-terminal-green">dulitha@cybersecurity:~$ ls -la certificates/</span>
+              </div>
+            </div>
+            <div className="terminal-text">
+              <div className="text-terminal-green font-mono mb-4">Available Certifications:</div>
+              <div className="space-y-2 text-primary-dark font-mono text-sm">
+                {certifications.map((cert, index) => (
+                  <div key={cert.id} className="flex items-center space-x-4">
+                    <span className="text-terminal-green">-rw-r--r--</span>
+                    <span className="text-electric-blue">{cert.year}</span>
+                    <span className="text-terminal-green">{cert.name}</span>
+                    <span className="text-electric-purple">({cert.issuer})</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Certifications with Flip Cards */}
+        {/* Certifications */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,74 +190,53 @@ const About = () => {
           <h3 className="text-2xl font-cyber text-terminal-green text-center mb-8">Certifications</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {certifications.map((cert) => (
-              <FlipCard
+              <motion.div
                 key={cert.id}
-                front={
-                  <div className="cyber-card p-6 text-center h-full flex flex-col justify-center">
-                    <div className="w-20 h-20 mx-auto mb-4 rounded-lg overflow-hidden border-2 border-terminal-green/30 shadow-cyber">
-                      <img 
-                        src={cert.image} 
-                        alt={`${cert.name} Certificate`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <h4 className="text-lg font-cyber text-terminal-green mb-2">{cert.name}</h4>
-                    <p className="text-electric-blue font-semibold text-sm mb-2">{cert.issuer}</p>
-                    <p className="text-xs text-secondary-light dark:text-secondary-dark mb-3">{cert.year}</p>
-                    <p className="text-sm text-primary-light dark:text-primary-dark mb-4">{cert.description}</p>
-                    <div className="mt-auto">
-                      <p className="text-xs text-terminal-green font-mono animate-pulse">Hover to view details</p>
-                    </div>
-                  </div>
-                }
-                back={
-                  <div className="cyber-card p-6 text-center h-full flex flex-col justify-center bg-gradient-to-br from-card-dark to-background-dark">
-                    <div className="mb-4">
-                      <BuildingOfficeIcon className="h-12 w-12 mx-auto text-electric-blue mb-2" />
-                      <h4 className="text-lg font-cyber text-terminal-green mb-2">{cert.name}</h4>
-                      <p className="text-electric-blue font-semibold text-sm mb-2">{cert.issuer}</p>
-                    </div>
-                    
-                    <div className="space-y-3 mb-4">
-                      <div className="flex items-center justify-center space-x-2">
-                        <CalendarIcon className="h-4 w-4 text-terminal-green" />
-                        <span className="text-sm text-primary-light dark:text-primary-dark">{cert.year}</span>
-                      </div>
-                      <div className="flex items-center justify-center space-x-2">
-                        <ShieldCheckIcon className="h-4 w-4 text-terminal-green" />
-                        <span className="text-xs text-electric-blue font-mono">{cert.credentialId}</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2 mb-4">
-                      <p className="text-xs font-semibold text-electric-blue">Key Skills:</p>
-                      <div className="flex flex-wrap gap-1 justify-center">
-                        {cert.skills.map((skill, index) => (
-                          <span
-                            key={index}
-                            className="px-2 py-1 bg-terminal-green/20 text-terminal-green text-xs rounded"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mt-auto">
-                      <motion.a
-                        href={cert.verificationUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-2 text-xs text-electric-blue hover:text-terminal-green transition-colors duration-300"
-                        whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="cyber-card p-6 text-center h-full flex flex-col justify-center group hover:scale-105 transition-transform duration-300"
+              >
+                <div className="w-20 h-20 mx-auto mb-4 rounded-lg overflow-hidden border-2 border-terminal-green/30 shadow-cyber group-hover:shadow-cyber-lg transition-all duration-300">
+                  <img 
+                    src={cert.image} 
+                    alt={`${cert.name} Certificate`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h4 className="text-lg font-cyber text-terminal-green mb-2">{cert.name}</h4>
+                <p className="text-electric-blue font-semibold text-sm mb-2">{cert.issuer}</p>
+                <p className="text-xs text-secondary-dark mb-3">{cert.year}</p>
+                <p className="text-sm text-primary-dark mb-4">{cert.description}</p>
+                
+                <div className="space-y-2 mb-4">
+                  <p className="text-xs font-semibold text-electric-blue">Key Skills:</p>
+                  <div className="flex flex-wrap gap-1 justify-center">
+                    {cert.skills.map((skill, index) => (
+                      <span
+                        key={index}
+                        className="px-2 py-1 bg-terminal-green/20 text-terminal-green text-xs rounded"
                       >
-                        <span>Verify Certificate</span>
-                        <span>→</span>
-                      </motion.a>
-                    </div>
+                        {skill}
+                      </span>
+                    ))}
                   </div>
-                }
-              />
+                </div>
+
+                <div className="mt-auto">
+                  <motion.a
+                    href={cert.verificationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 text-xs text-electric-blue hover:text-terminal-green transition-colors duration-300"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <span>Verify Certificate</span>
+                    <span>→</span>
+                  </motion.a>
+                </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -212,7 +263,7 @@ const About = () => {
                   {area.icon}
                 </div>
                 <h4 className="text-lg font-cyber text-terminal-green mb-3">{area.title}</h4>
-                <p className="text-sm text-primary-light dark:text-primary-dark">{area.description}</p>
+                <p className="text-sm text-primary-dark">{area.description}</p>
               </motion.div>
             ))}
           </div>

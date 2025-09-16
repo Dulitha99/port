@@ -174,9 +174,9 @@ const Skills = () => {
   const [selectedTool, setSelectedTool] = useState<string | null>(null);
 
   return (
-    <section id="skills" className="py-20 bg-background-light dark:bg-background-dark relative overflow-hidden">
+    <section id="skills" className="py-20 bg-background-dark relative overflow-hidden">
       {/* Cyber Grid Background */}
-      <div className="absolute inset-0 cyber-grid dark:opacity-10 opacity-5"></div>
+      <div className="absolute inset-0 cyber-grid opacity-10"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -190,7 +190,7 @@ const Skills = () => {
             <ShieldCheckIcon className="h-12 w-12 text-terminal-green mr-4" />
             <h2 className="section-title">Cybersecurity Arsenal</h2>
           </div>
-          <p className="text-lg text-primary-light dark:text-primary-dark max-w-3xl mx-auto">
+          <p className="text-lg text-primary-dark max-w-3xl mx-auto">
             A comprehensive collection of security tools and technologies I use to protect digital assets and identify vulnerabilities.
           </p>
         </motion.div>
@@ -236,13 +236,33 @@ const Skills = () => {
                   {tool.icon}
                 </motion.div>
                 
-                <h3 className="text-lg font-cyber text-primary-light dark:text-primary-dark mb-2 group-hover:text-terminal-green transition-colors duration-300">
+                <h3 className="text-lg font-cyber text-primary-dark mb-2 group-hover:text-terminal-green transition-colors duration-300">
                   {tool.name}
                 </h3>
                 
                 <p className="text-sm text-electric-blue font-semibold mb-3">
                   {tool.category}
                 </p>
+                
+                {/* ASCII Progress Bar */}
+                <div className="mb-3">
+                  <div className="flex items-center justify-between text-xs text-terminal-green font-mono mb-1">
+                    <span>PROFICIENCY</span>
+                    <span>{Math.floor(Math.random() * 30 + 70)}%</span>
+                  </div>
+                  <div className="w-full bg-background-dark/50 rounded-full h-2 border border-terminal-green/30">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-terminal-green to-electric-blue rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${Math.floor(Math.random() * 30 + 70)}%` }}
+                      transition={{ duration: 1, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    />
+                  </div>
+                  <div className="text-xs text-terminal-green font-mono mt-1">
+                    ████████████████████░░░░
+                  </div>
+                </div>
                 
                 <motion.p
                   initial={{ opacity: 0, height: 0 }}
@@ -251,7 +271,7 @@ const Skills = () => {
                     height: selectedTool === tool.id ? 'auto' : 0
                   }}
                   transition={{ duration: 0.3 }}
-                  className="text-xs text-secondary-light dark:text-secondary-dark leading-relaxed overflow-hidden"
+                  className="text-xs text-secondary-dark leading-relaxed overflow-hidden"
                 >
                   {tool.description}
                 </motion.p>
@@ -270,7 +290,7 @@ const Skills = () => {
         >
           <div className="text-center mb-8">
             <h3 className="text-2xl font-cyber text-terminal-green mb-4">Professional Strengths</h3>
-            <p className="text-primary-light dark:text-primary-dark">
+            <p className="text-primary-dark">
               Core competencies that drive my success in cybersecurity roles
             </p>
           </div>
@@ -289,7 +309,7 @@ const Skills = () => {
                 <div className="text-terminal-green mb-2 group-hover:text-electric-blue transition-colors duration-300">
                   <ShieldCheckIcon className="h-6 w-6 mx-auto" />
                 </div>
-                <p className="text-sm font-medium text-primary-light dark:text-primary-dark group-hover:text-terminal-green transition-colors duration-300">
+                <p className="text-sm font-medium text-primary-dark group-hover:text-terminal-green transition-colors duration-300">
                   {skill.name}
                 </p>
               </motion.div>

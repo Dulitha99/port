@@ -3,51 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles */
+/* Base styles - Dark mode only */
 @layer base {
   * {
-    @apply border-gray-200 dark:border-gray-700;
+    @apply border-gray-700;
   }
 
   body {
-    @apply bg-background-light dark:bg-background-dark text-primary-light dark:text-primary-dark;
+    @apply bg-background-dark text-primary-dark;
     font-feature-settings: "rlig" 1, "calt" 1;
-  }
-  
-  /* Light mode improvements */
-  .light {
-    @apply bg-gray-50 text-gray-900;
-  }
-  
-  .light .cyber-text {
-    @apply text-gray-800;
-    text-shadow: none;
-  }
-  
-  .light .terminal {
-    @apply bg-white border-gray-300 text-gray-800;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.95) 100%);
-  }
-  
-  /* Light mode text visibility improvements */
-  .light .text-primary-light {
-    @apply text-gray-800;
-  }
-  
-  .light .text-secondary-light {
-    @apply text-gray-600;
-  }
-  
-  .light .text-terminal-green {
-    @apply text-green-600;
-  }
-  
-  .light .text-electric-blue {
-    @apply text-blue-600;
-  }
-  
-  .light .text-electric-purple {
-    @apply text-purple-600;
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
   }
   
   html {
@@ -128,17 +93,17 @@
   
   /* Navigation styles */
   .nav-link {
-    @apply text-primary-light dark:text-primary-dark hover:text-terminal-green transition-colors duration-300;
+    @apply text-primary-dark hover:text-terminal-green transition-colors duration-300;
   }
   
   /* Card styles */
   .card {
-    @apply bg-card-light dark:bg-card-dark border border-terminal-green/20 rounded-xl p-6 backdrop-blur-sm;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    @apply bg-card-dark border border-terminal-green/20 rounded-xl p-6 backdrop-blur-sm;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
   }
   
   .cyber-card {
-    @apply bg-card-light dark:bg-card-dark border border-terminal-green/20 rounded-xl p-6 backdrop-blur-sm;
+    @apply bg-card-dark border border-terminal-green/20 rounded-xl p-6 backdrop-blur-sm;
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
   }
 

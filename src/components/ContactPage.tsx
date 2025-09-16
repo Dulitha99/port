@@ -76,24 +76,28 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <div id="contact" className="container mx-auto px-4 py-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="text-center mb-16"
-      >
-        <div className="inline-flex items-center justify-center mb-4">
-            <ChatBubbleLeftEllipsisIcon className="h-10 w-10 text-accent-light dark:text-accent-dark mr-3" />
-            <h1 className="text-4xl sm:text-5xl font-bold text-primary-light dark:text-primary-dark">
-              Contact Me
+    <div id="contact" className="container mx-auto px-4 py-16 bg-background-dark relative overflow-hidden">
+      {/* Cyber Grid Background */}
+      <div className="absolute inset-0 cyber-grid opacity-10"></div>
+      
+      <div className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center justify-center mb-4">
+            <ChatBubbleLeftEllipsisIcon className="h-10 w-10 text-terminal-green mr-3" />
+            <h1 className="text-4xl sm:text-5xl font-cyber font-bold cyber-text">
+              CONTACT_PROTOCOL
             </h1>
-        </div>
-        <p className="text-lg text-secondary-light dark:text-secondary-dark mb-12 max-w-2xl mx-auto">
-          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!
-        </p>
-      </motion.div>
+          </div>
+          <p className="text-lg text-secondary-dark mb-12 max-w-2xl mx-auto font-mono">
+            [INFO] Establishing secure communication channel...
+          </p>
+        </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         <motion.div
@@ -101,44 +105,44 @@ const ContactPage: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true, amount: 0.2 }}
-          className="space-y-6 bg-card-light dark:bg-card-dark p-6 sm:p-8 rounded-xl shadow-xl" // Using card styles
+          className="space-y-6 cyber-card p-6 sm:p-8"
         >
           {/* Redundant "Contact Information" h2 removed */}
           <div className="flex items-start space-x-4">
-            <EnvelopeIcon className="h-6 w-6 text-accent-light dark:text-accent-dark flex-shrink-0 mt-1" />
+            <EnvelopeIcon className="h-6 w-6 text-terminal-green flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lg font-medium text-primary-light dark:text-primary-dark">Email</h3>
-              <a href="mailto:dulithawickramasinghe@gmail.com" className="text-secondary-light dark:text-secondary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors">
+              <h3 className="text-lg font-mono font-medium text-terminal-green">EMAIL_ADDRESS</h3>
+              <a href="mailto:dulithawickramasinghe@gmail.com" className="text-electric-blue hover:text-terminal-green transition-colors font-mono">
                 dulithawickramasinghe@gmail.com
               </a>
             </div>
           </div>
           <div className="flex items-start space-x-4">
-            <PhoneIcon className="h-6 w-6 text-accent-light dark:text-accent-dark flex-shrink-0 mt-1" />
+            <PhoneIcon className="h-6 w-6 text-terminal-green flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lg font-medium text-primary-light dark:text-primary-dark">Phone</h3>
-              <a href="tel:+94753766162" className="text-secondary-light dark:text-secondary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors">
+              <h3 className="text-lg font-mono font-medium text-terminal-green">PHONE_NUMBER</h3>
+              <a href="tel:+94753766162" className="text-electric-blue hover:text-terminal-green transition-colors font-mono">
                 +94 75 376 6162
               </a>
             </div>
           </div>
           <div className="flex items-start space-x-4">
-            <MapPinIcon className="h-6 w-6 text-accent-light dark:text-accent-dark flex-shrink-0 mt-1" />
+            <MapPinIcon className="h-6 w-6 text-terminal-green flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lg font-medium text-primary-light dark:text-primary-dark">Address</h3>
-              <p className="text-secondary-light dark:text-secondary-dark">
+              <h3 className="text-lg font-mono font-medium text-terminal-green">LOCATION</h3>
+              <p className="text-secondary-dark font-mono">
                 Colombo, Sri Lanka (Remote Open to Worldwide)
               </p>
             </div>
           </div>
-          <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-medium text-primary-light dark:text-primary-dark mb-2">My Location</h3>
-            <div className="aspect-video rounded-md overflow-hidden shadow-md"> {/* Added overflow-hidden and shadow */}
+          <div className="mt-6 pt-6 border-t border-terminal-green/30">
+            <h3 className="text-lg font-mono font-medium text-terminal-green mb-2">GPS_COORDINATES</h3>
+            <div className="aspect-video rounded-md overflow-hidden border border-terminal-green/30"> 
               <iframe
                 src="https://maps.google.com/maps?q=Colombo%2C%20Sri%20Lanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full"
-                style={{ border: 0 }}
-                allowFullScreen={true} // React uses camelCase for boolean attributes or direct boolean
+                style={{ border: 0, filter: 'hue-rotate(90deg) contrast(1.2) saturate(1.3)' }}
+                allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Google Map of Colombo, Sri Lanka" 
@@ -152,69 +156,70 @@ const ContactPage: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true, amount: 0.2 }}
-          className="bg-card-light dark:bg-card-dark p-6 sm:p-8 rounded-xl shadow-xl" // Using card styles
+          className="cyber-card p-6 sm:p-8"
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold text-primary-light dark:text-primary-dark mb-6">
-            Send Me a Message
+          <h2 className="text-2xl sm:text-3xl font-cyber font-semibold text-terminal-green mb-6">
+            MESSAGE_TRANSMISSION
           </h2>
           <form action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} className="space-y-5">
             <input type="hidden" name="access_key" value="387385f0-622c-4391-862d-696b4c4483b0" />
             <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-primary-light dark:text-primary-dark mb-1">Full Name</label>
+              <label htmlFor="name" className="block text-sm font-mono font-medium text-terminal-green mb-1">enter name:</label>
               <input 
                 type="text" name="name" id="name" value={formData.name} onChange={handleChange} onBlur={handleBlur}
-                className={`mt-1 block w-full px-4 py-3 border rounded-md shadow-sm sm:text-sm placeholder-secondary-light dark:placeholder-secondary-dark bg-background-light dark:bg-gray-700 text-primary-light dark:text-primary-dark ${errors.name ? 'border-red-500 dark:border-red-500 focus:ring-red-500 dark:focus:ring-red-500 focus:border-red-500 dark:focus:border-red-500' : 'border-gray-300 dark:border-gray-600 focus:ring-accent-light dark:focus:ring-accent-dark focus:border-accent-light dark:focus:border-accent-dark'}`}
-                placeholder="John Doe"
+                className={`mt-1 block w-full px-4 py-3 border rounded-md shadow-sm sm:text-sm font-mono bg-background-dark text-primary-dark placeholder-secondary-dark ${errors.name ? 'border-terminal-red focus:ring-terminal-red focus:border-terminal-red' : 'border-terminal-green/30 focus:ring-terminal-green focus:border-terminal-green'}`}
+                placeholder="[__________]"
               />
-              {errors.name && <p className="mt-1 text-xs text-red-500 dark:text-red-400">{errors.name}</p>}
+              {errors.name && <p className="mt-1 text-xs text-terminal-red font-mono">{errors.name}</p>}
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-primary-light dark:text-primary-dark mb-1">Email Address</label>
+              <label htmlFor="email" className="block text-sm font-mono font-medium text-terminal-green mb-1">enter email:</label>
               <input 
                 type="email" name="email" id="email" value={formData.email} onChange={handleChange} onBlur={handleBlur}
-                className={`mt-1 block w-full px-4 py-3 border rounded-md shadow-sm sm:text-sm placeholder-secondary-light dark:placeholder-secondary-dark bg-background-light dark:bg-gray-700 text-primary-light dark:text-primary-dark ${errors.email ? 'border-red-500 dark:border-red-500 focus:ring-red-500 dark:focus:ring-red-500 focus:border-red-500 dark:focus:border-red-500' : 'border-gray-300 dark:border-gray-600 focus:ring-accent-light dark:focus:ring-accent-dark focus:border-accent-light dark:focus:border-accent-dark'}`}
-                placeholder="you@example.com"
+                className={`mt-1 block w-full px-4 py-3 border rounded-md shadow-sm sm:text-sm font-mono bg-background-dark text-primary-dark placeholder-secondary-dark ${errors.email ? 'border-terminal-red focus:ring-terminal-red focus:border-terminal-red' : 'border-terminal-green/30 focus:ring-terminal-green focus:border-terminal-green'}`}
+                placeholder="[__________]"
               />
-              {errors.email && <p className="mt-1 text-xs text-red-500 dark:text-red-400">{errors.email}</p>}
+              {errors.email && <p className="mt-1 text-xs text-terminal-red font-mono">{errors.email}</p>}
             </div>
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-primary-light dark:text-primary-dark mb-1">Subject (Optional)</label>
+              <label htmlFor="subject" className="block text-sm font-mono font-medium text-electric-blue mb-1">subject (optional):</label>
               <input 
                 type="text" name="subject" id="subject" value={formData.subject} onChange={handleChange}
-                className="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-accent-light dark:focus:ring-accent-dark focus:border-accent-light dark:focus:border-accent-dark sm:text-sm bg-background-light dark:bg-gray-700 text-primary-light dark:text-primary-dark placeholder-secondary-light dark:placeholder-secondary-dark"
-                placeholder="Regarding your project..."
+                className="mt-1 block w-full px-4 py-3 border border-terminal-green/30 rounded-md shadow-sm focus:ring-terminal-green focus:border-terminal-green sm:text-sm font-mono bg-background-dark text-primary-dark placeholder-secondary-dark"
+                placeholder="[__________]"
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-primary-light dark:text-primary-dark mb-1">Message</label>
+              <label htmlFor="message" className="block text-sm font-mono font-medium text-terminal-green mb-1">enter message:</label>
               <textarea 
                 name="message" id="message" rows={5} value={formData.message} onChange={handleChange} onBlur={handleBlur}
-                className={`mt-1 block w-full px-4 py-3 border rounded-md shadow-sm sm:text-sm placeholder-secondary-light dark:placeholder-secondary-dark bg-background-light dark:bg-gray-700 text-primary-light dark:text-primary-dark ${errors.message ? 'border-red-500 dark:border-red-500 focus:ring-red-500 dark:focus:ring-red-500 focus:border-red-500 dark:focus:border-red-500' : 'border-gray-300 dark:border-gray-600 focus:ring-accent-light dark:focus:ring-accent-dark focus:border-accent-light dark:focus:border-accent-dark'}`}
-                placeholder="Your message here..."
+                className={`mt-1 block w-full px-4 py-3 border rounded-md shadow-sm sm:text-sm font-mono bg-background-dark text-primary-dark placeholder-secondary-dark ${errors.message ? 'border-terminal-red focus:ring-terminal-red focus:border-terminal-red' : 'border-terminal-green/30 focus:ring-terminal-green focus:border-terminal-green'}`}
+                placeholder="[__________]"
               ></textarea>
-              {errors.message && <p className="mt-1 text-xs text-red-500 dark:text-red-400">{errors.message}</p>}
+              {errors.message && <p className="mt-1 text-xs text-terminal-red font-mono">{errors.message}</p>}
             </div>
             <div>
               <button 
                 type="submit" 
                 disabled={formStatus === 'submitting'}
-                className="w-full btn btn-primary py-3 px-6 text-base disabled:opacity-70"
+                className="w-full bg-terminal-green/20 border-2 border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-background-dark font-mono font-semibold py-3 px-6 text-base disabled:opacity-70 transition-all duration-300"
               >
-                {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+                {formStatus === 'submitting' ? 'transmitting data...' : '[ TRANSMIT ]'}
               </button>
             </div>
             {formStatus === 'success' && (
-              <p className="mt-4 text-sm text-green-600 dark:text-green-400 text-center">Message sent successfully! I'll get back to you soon.</p>
+              <p className="mt-4 text-sm text-terminal-green text-center font-mono">success.</p>
             )}
             {formStatus === 'error' && Object.keys(errors).length > 0 && (
-              <p className="mt-4 text-sm text-red-500 dark:text-red-400 text-center">Please correct the errors above.</p>
+              <p className="mt-4 text-sm text-terminal-red text-center font-mono">error: validation failed.</p>
             )}
-             {formStatus === 'error' && Object.keys(errors).length === 0 && ( // General error if submit fails for other reasons
-              <p className="mt-4 text-sm text-red-500 dark:text-red-400 text-center">Could not send message. Please try again later.</p>
+             {formStatus === 'error' && Object.keys(errors).length === 0 && (
+              <p className="mt-4 text-sm text-terminal-red text-center font-mono">error: transmission failed.</p>
             )}
           </form>
         </motion.div>
+      </div>
       </div>
     </div>
   );

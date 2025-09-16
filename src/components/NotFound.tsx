@@ -59,9 +59,9 @@ const NotFound: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background-light dark:bg-background-dark flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-background-dark flex items-center justify-center relative overflow-hidden">
       {/* Matrix Background */}
-      <div className="absolute inset-0 cyber-grid dark:opacity-20 opacity-10"></div>
+      <div className="absolute inset-0 cyber-grid opacity-20"></div>
       
       {/* Floating Error Icons */}
       <div className="absolute inset-0 pointer-events-none">
@@ -161,7 +161,7 @@ const NotFound: React.FC = () => {
                 SECURITY BREACH DETECTED
               </h2>
               
-              <p className="text-lg text-primary-light dark:text-primary-dark leading-relaxed max-w-2xl mx-auto">
+              <p className="text-lg text-primary-dark leading-relaxed max-w-2xl mx-auto">
                 The requested resource has been <span className="text-terminal-red font-semibold">quarantined</span> or 
                 <span className="text-electric-blue font-semibold"> relocated</span> for security purposes. 
                 This could be due to unauthorized access attempts or system maintenance.
@@ -209,12 +209,12 @@ const NotFound: React.FC = () => {
               transition={{ delay: 2.5, duration: 0.5 }}
               className="pt-6 border-t border-terminal-green/20"
             >
-              <div className="flex items-center justify-center space-x-2 text-sm text-secondary-light dark:text-secondary-dark">
+              <div className="flex items-center justify-center space-x-2 text-sm text-secondary-dark">
                 <span className="text-terminal-green">$</span>
                 <span className="text-electric-blue">system_status</span>
                 <span className="text-terminal-green">--check</span>
               </div>
-              <p className="text-xs text-secondary-light dark:text-secondary-dark mt-2 font-mono">
+              <p className="text-xs text-secondary-dark mt-2 font-mono">
                 System: Online | Security: Active | Last Scan: {new Date().toLocaleTimeString()}
               </p>
             </motion.div>
