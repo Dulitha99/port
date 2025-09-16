@@ -12,10 +12,11 @@ import ProtectedAdminRoute from './components/ProtectedAdminRoute';
 // Components
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
+import SecurityFocusAreas from './components/SecurityFocusAreas';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
+import Certifications from './components/Certifications';
 import Projects from './components/Projects';
 import BlogsPage from './components/BlogsPage';
 import ContactPage from './components/ContactPage';
@@ -109,9 +110,10 @@ function App() {
                     <Route path="/" element={
                       <main>
                         <Hero />
-                        <About />
+                        <SecurityFocusAreas />
                         <Experience />
                         <Education />
+                        <Certifications />
                         <Skills />
                         <Projects />
                         <div id="blogs">

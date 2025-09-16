@@ -97,11 +97,16 @@ const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="flex items-center space-x-2"
+                className="text-terminal-green"
               >
-                <span className="text-terminal-green">$</span>
-                <span className="text-electric-blue">cat profile.txt</span>
+                <TypingAnimation 
+                  texts={["Cyber Security Analyst"]}
+                  speed={100}
+                  pauseTime={3000}
+                  className="text-terminal-green"
+                />
               </motion.div>
+              
             </div>
           </motion.div>
 
