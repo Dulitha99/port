@@ -85,10 +85,7 @@ const Projects = () => {
                     <img 
                       src={project.imageUrl} 
                       alt={project.title} 
-                      className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-110 relative z-10"
-                      style={{
-                        filter: 'hue-rotate(90deg) contrast(1.2) saturate(1.3)'
-                      }}
+                      className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 relative z-10"
                     />
                   ) : (
                     <span className="text-terminal-green font-mono text-sm relative z-10">[PROJECT_IMAGE]</span>

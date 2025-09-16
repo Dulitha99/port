@@ -7,8 +7,8 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', href: '#home' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Education', href: '#education' },
     { name: 'Projects', href: '#projects' },
     { name: 'Blogs', href: '#blogs' },

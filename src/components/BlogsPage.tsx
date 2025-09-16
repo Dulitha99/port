@@ -88,10 +88,7 @@ const BlogsPage: React.FC = () => {
                   <img 
                     src={article.imageUrl} 
                     alt={article.title} 
-                    className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
-                    style={{
-                      filter: 'hue-rotate(90deg) contrast(1.2) saturate(1.3)'
-                    }}
+                    className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <span className="text-terminal-green font-mono text-sm">[ARTICLE_PREVIEW]</span>

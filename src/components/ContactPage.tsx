@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPinIcon, PhoneIcon, EnvelopeIcon, ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline';
+import { PhoneIcon, EnvelopeIcon, ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline';
 
 interface FormData {
   name: string;
@@ -127,26 +127,11 @@ const ContactPage: React.FC = () => {
             </div>
           </div>
           <div className="flex items-start space-x-4">
-            <MapPinIcon className="h-6 w-6 text-terminal-green flex-shrink-0 mt-1" />
             <div>
               <h3 className="text-lg font-mono font-medium text-terminal-green">LOCATION</h3>
               <p className="text-secondary-dark font-mono">
                 Colombo, Sri Lanka (Remote Open to Worldwide)
               </p>
-            </div>
-          </div>
-          <div className="mt-6 pt-6 border-t border-terminal-green/30">
-            <h3 className="text-lg font-mono font-medium text-terminal-green mb-2">GPS_COORDINATES</h3>
-            <div className="aspect-video rounded-md overflow-hidden border border-terminal-green/30"> 
-              <iframe
-                src="https://maps.google.com/maps?q=Colombo%2C%20Sri%20Lanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                className="w-full h-full"
-                style={{ border: 0, filter: 'hue-rotate(90deg) contrast(1.2) saturate(1.3)' }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Google Map of Colombo, Sri Lanka" 
-              ></iframe>
             </div>
           </div>
         </motion.div>
