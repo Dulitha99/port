@@ -12,9 +12,9 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = "Dulitha Wickramasinghe - Cybersecurity Professional",
-  description = "Cybersecurity professional with expertise in SOC operations, threat hunting, endpoint security, and penetration testing. Skilled in Palo Alto Cortex XDR, Entra ID, and security awareness training.",
-  keywords = "cybersecurity, SOC analyst, threat hunting, penetration testing, endpoint security, Palo Alto Cortex XDR, Entra ID, security awareness, vulnerability assessment, incident response, security monitoring, risk assessment, network security, firewall management, threat prevention, security architecture, TryHackMe, IBM, Fortinet, NSE1, cybersecurity certifications",
+  title = "Dulitha Wickramasinghe - Expert Cybersecurity Analyst & Penetration Tester",
+  description = "Experienced cybersecurity professional specializing in SOC operations, threat hunting, and penetration testing. Certified in IBM Cybersecurity, TryHackMe, and Fortinet NSE1. Expert in Palo Alto Cortex XDR, vulnerability assessment, and security awareness training. Available for cybersecurity consulting and remote security services.",
+  keywords = "cybersecurity analyst, SOC operations specialist, threat hunter, penetration tester, cybersecurity consultant, security analyst, incident response, vulnerability assessment, Palo Alto Cortex XDR, Entra ID, network security, endpoint security, security awareness training, cybersecurity certifications, IBM cybersecurity, TryHackMe, Fortinet NSE1, security monitoring, risk assessment, firewall management, threat prevention, security architecture, cybersecurity portfolio, security professional, cyber defense, security consultant, remote cybersecurity, Sri Lanka cybersecurity expert, cybersecurity services, security assessment, penetration testing services, threat detection, security operations center, cyber threat intelligence, security compliance, cybersecurity training, security audit, cyber risk management, information security, cybersecurity career, security engineer, cyber analyst, security specialist, cybersecurity expert, digital security, cyber protection, security solutions, cybersecurity professional services",
   image = "https://dulitha-wickramasinghe.netlify.app/og-image.jpg",
   url = "https://dulitha-wickramasinghe.netlify.app/",
   type = "website"
@@ -62,6 +62,31 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="apple-mobile-web-app-title" content="Dulitha Wickramasinghe" />
       
+      {/* Enhanced SEO Meta Tags */}
+      <meta name="geo.region" content="LK" />
+      <meta name="geo.placename" content="Colombo, Sri Lanka" />
+      <meta name="geo.position" content="6.9271;79.8612" />
+      <meta name="ICBM" content="6.9271, 79.8612" />
+      <meta name="DC.title" content={title} />
+      <meta name="DC.creator" content="Dulitha Wickramasinghe" />
+      <meta name="DC.subject" content="Cybersecurity, Information Security, Penetration Testing, SOC Operations" />
+      <meta name="DC.description" content={description} />
+      <meta name="DC.publisher" content="Dulitha Wickramasinghe" />
+      <meta name="DC.contributor" content="Dulitha Wickramasinghe" />
+      <meta name="DC.date" content="2024" />
+      <meta name="DC.type" content="Text" />
+      <meta name="DC.format" content="text/html" />
+      <meta name="DC.identifier" content={url} />
+      <meta name="DC.language" content="en" />
+      <meta name="DC.rights" content="Copyright Dulitha Wickramasinghe" />
+      
+      {/* Professional Network Meta Tags */}
+      <meta name="profession" content="Cybersecurity Professional" />
+      <meta name="specialization" content="SOC Operations, Threat Hunting, Penetration Testing" />
+      <meta name="certifications" content="IBM Cybersecurity Analyst, TryHackMe Jr Penetration Tester, Fortinet NSE1" />
+      <meta name="availability" content="Available for remote cybersecurity consulting" />
+      <meta name="location" content="Colombo, Sri Lanka - Remote Worldwide" />
+      
       {/* Canonical URL */}
       <link rel="canonical" href={url} />
       
@@ -82,19 +107,30 @@ const SEO: React.FC<SEOProps> = ({
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       <link rel="dns-prefetch" href="//fonts.gstatic.com" />
       
-      {/* Structured Data */}
+      {/* Enhanced Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
           "name": "Dulitha Wickramasinghe",
-          "jobTitle": "Cybersecurity Professional",
+          "alternateName": "Dulitha Cyber",
+          "jobTitle": ["Cybersecurity Analyst", "Penetration Tester", "SOC Operations Specialist", "Threat Hunter"],
           "description": description,
           "url": url,
           "image": image,
+          "nationality": "Sri Lankan",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Colombo",
+            "addressCountry": "Sri Lanka"
+          },
+          "email": "dulithawickramasinghe@gmail.com",
+          "telephone": "+94753766162",
           "sameAs": [
             "https://www.linkedin.com/in/dulitha-wickramasinghe-398971211/",
-            "https://github.com/Dulitha99"
+            "https://github.com/Dulitha99",
+            "https://tryhackme.com/p/dulithawickramas",
+            "https://medium.com/@dulithawickramasinghe"
           ],
           "knowsAbout": [
             "Cybersecurity",
@@ -104,37 +140,91 @@ const SEO: React.FC<SEOProps> = ({
             "Endpoint Security",
             "Network Security",
             "Incident Response",
-            "Security Awareness Training"
+            "Security Awareness Training",
+            "Vulnerability Assessment",
+            "Risk Assessment",
+            "Security Monitoring",
+            "Firewall Management",
+            "Threat Prevention",
+            "Security Architecture",
+            "Palo Alto Cortex XDR",
+            "Entra ID",
+            "Security Compliance",
+            "Cyber Threat Intelligence"
           ],
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Cybersecurity Professional",
+            "occupationLocation": {
+              "@type": "Country",
+              "name": "Sri Lanka"
+            },
+            "skills": [
+              "SOC Operations",
+              "Threat Hunting",
+              "Penetration Testing",
+              "Endpoint Security",
+              "Network Security",
+              "Incident Response",
+              "Vulnerability Assessment"
+            ]
+          },
           "hasCredential": [
             {
               "@type": "EducationalOccupationalCredential",
               "name": "Jr Penetration Tester Certificate",
               "credentialCategory": "certification",
+              "dateCreated": "2023",
               "recognizedBy": {
                 "@type": "Organization",
-                "name": "TryHackMe"
+                "name": "TryHackMe",
+                "url": "https://tryhackme.com"
               }
             },
             {
               "@type": "EducationalOccupationalCredential",
               "name": "IBM Cybersecurity Analyst",
               "credentialCategory": "certification",
+              "dateCreated": "2023",
               "recognizedBy": {
                 "@type": "Organization",
-                "name": "IBM"
+                "name": "IBM",
+                "url": "https://www.ibm.com"
               }
             },
             {
               "@type": "EducationalOccupationalCredential",
               "name": "Fortinet Network Security Expert Level 1: Certified Associate",
               "credentialCategory": "certification",
+              "dateCreated": "2023",
               "recognizedBy": {
                 "@type": "Organization",
-                "name": "Fortinet"
+                "name": "Fortinet",
+                "url": "https://www.fortinet.com"
               }
             }
-          ]
+          ],
+          "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Sri Lanka Institute of Information Technology (SLIIT)",
+            "description": "BSc (Hons) in Information Technology Specializing in Cyber Security"
+          },
+          "offers": {
+            "@type": "Service",
+            "name": "Cybersecurity Consulting Services",
+            "description": "Professional cybersecurity services including penetration testing, vulnerability assessment, security awareness training, and SOC operations consulting",
+            "provider": {
+              "@type": "Person",
+              "name": "Dulitha Wickramasinghe"
+            },
+            "areaServed": "Worldwide",
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceUrl": url,
+              "serviceSmsNumber": "+94753766162",
+              "serviceEmail": "dulithawickramasinghe@gmail.com"
+            }
+          }
         })}
       </script>
     </Helmet>

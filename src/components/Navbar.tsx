@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,8 +8,8 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Education', href: '#education' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Blogs', href: '#blogs' },
     { name: 'Contact', href: '#contact' },
@@ -23,9 +23,11 @@ const Navbar = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
+            className="flex items-center space-x-3"
           >
+            <ShieldCheckIcon className="h-8 w-8 text-terminal-green" />
             <a href="#home" className="text-2xl font-cyber font-bold text-terminal-green hover:text-electric-blue transition-colors duration-300">
-              DULITHA@CYBER:~$
+              Dulitha Wickramasinghe
             </a>
           </motion.div>
 
