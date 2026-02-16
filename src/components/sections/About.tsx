@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheckIcon, AcademicCapIcon, TrophyIcon, CodeBracketIcon, CalendarIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
-import FlipCard from './FlipCard';
+import FlipCard from '../ui/FlipCard';
 
 const About = () => {
   const certifications = [
@@ -67,7 +67,7 @@ const About = () => {
     <section id="about" className="py-20 bg-background-dark relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 cyber-grid opacity-10"></div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Terminal Window */}
         <motion.div
@@ -101,7 +101,7 @@ const About = () => {
               <span className="text-terminal-green">$</span>
               <span className="text-electric-blue">whoami</span>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -199,8 +199,8 @@ const About = () => {
                 className="cyber-card p-6 text-center h-full flex flex-col justify-center group hover:scale-105 transition-transform duration-300"
               >
                 <div className="w-20 h-20 mx-auto mb-4 rounded-lg overflow-hidden border-2 border-terminal-green/30 shadow-cyber group-hover:shadow-cyber-lg transition-all duration-300">
-                  <img 
-                    src={cert.image} 
+                  <img
+                    src={cert.image}
                     alt={`${cert.name} Certificate`}
                     className="w-full h-full object-cover"
                   />
@@ -209,7 +209,7 @@ const About = () => {
                 <p className="text-electric-blue font-semibold text-sm mb-2">{cert.issuer}</p>
                 <p className="text-xs text-secondary-dark mb-3">{cert.year}</p>
                 <p className="text-sm text-primary-dark mb-4">{cert.description}</p>
-                
+
                 <div className="space-y-2 mb-4">
                   <p className="text-xs font-semibold text-electric-blue">Key Skills:</p>
                   <div className="flex flex-wrap gap-1 justify-center">

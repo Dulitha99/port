@@ -3,65 +3,32 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
-import TerminalLoader from './components/TerminalLoader';
-import ErrorBoundary from './components/ErrorBoundary';
-import SEO from './components/SEO';
-import AdminLogin from './components/AdminLogin';
-import ProtectedAdminRoute from './components/ProtectedAdminRoute';
+import TerminalLoader from './components/ui/TerminalLoader';
+import ErrorBoundary from './components/layout/ErrorBoundary';
+import SEO from './components/layout/SEO';
+import AdminLogin from './components/admin/AdminLogin';
+import ProtectedAdminRoute from './components/layout/ProtectedAdminRoute';
 
 // Components
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import SecurityFocusAreas from './components/SecurityFocusAreas';
-import Experience from './components/Experience';
-import Education from './components/Education';
-import Skills from './components/Skills';
-import Certifications from './components/Certifications';
-import Projects from './components/Projects';
-import BlogsPage from './components/BlogsPage';
-import ContactPage from './components/ContactPage';
-import Footer from './components/Footer';
-import NotFound from './components/NotFound';
-import AdminDashboard from './components/AdminDashboard';
+import Navbar from './components/layout/Navbar';
+import Hero from './components/sections/Hero';
+import SecurityFocusAreas from './components/sections/SecurityFocusAreas';
+import Experience from './components/sections/Experience';
+import Education from './components/sections/Education';
+import Skills from './components/sections/Skills';
+import Certifications from './components/sections/Certifications';
+import Projects from './components/sections/Projects';
+import BlogsPage from './components/sections/BlogsPage';
+import ContactPage from './components/sections/ContactPage';
+import Footer from './components/layout/Footer';
+import NotFound from './components/ui/NotFound';
+import AdminDashboard from './components/admin/AdminDashboard';
+import MatrixBackground from './components/ui/MatrixBackground';
+import ScrollProgressBar from './components/ui/ScrollProgressBar';
+import CustomCursor from './components/ui/CustomCursor';
+import FloatingContact from './components/ui/FloatingContact';
 
-// Matrix background component
-const MatrixBackground: React.FC = () => {
-  const [matrixChars, setMatrixChars] = useState<string[]>([]);
-
-  useEffect(() => {
-    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-    const matrixArray = Array.from({ length: 50 }, () => 
-      chars[Math.floor(Math.random() * chars.length)]
-    );
-    setMatrixChars(matrixArray);
-  }, []);
-
-  return (
-    <div className="matrix-bg">
-      {matrixChars.map((char, index) => (
-        <motion.div
-          key={index}
-          className="absolute text-terminal-green/20 font-mono text-sm"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, window.innerHeight + 100],
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: Math.random() * 10 + 10,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-          }}
-        >
-          {char}
-        </motion.div>
-      ))}
-    </div>
-  );
-};
+// Matrix background component removed - imported instead
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -80,10 +47,13 @@ function App() {
           <Router>
             <div className="min-h-screen bg-background transition-colors duration-300">
               <SEO />
-              
+
               {/* Matrix Background */}
               <MatrixBackground />
-              
+              <ScrollProgressBar />
+              <CustomCursor />
+              <FloatingContact />
+
               <AnimatePresence>
                 {isLoading && (
                   <motion.div
@@ -105,7 +75,7 @@ function App() {
                   className="relative z-10"
                 >
                   <Navbar />
-                  
+
                   <Routes>
                     <Route path="/" element={
                       <main>
@@ -132,7 +102,7 @@ function App() {
                     } />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
-                  
+
                   <Footer />
                 </motion.div>
               )}
