@@ -42,7 +42,7 @@ const Certifications = () => {
     <section id="certifications" className="py-20 bg-background-dark relative overflow-hidden">
       {/* Cyber Grid Background */}
       <div className="absolute inset-0 cyber-grid opacity-10"></div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,8 +76,8 @@ const Certifications = () => {
                 className="cyber-card p-6 text-center h-full flex flex-col justify-center group hover:scale-105 transition-transform duration-300"
               >
                 <div className="w-20 h-20 mx-auto mb-4 rounded-lg overflow-hidden border-2 border-terminal-green/30 shadow-cyber group-hover:shadow-cyber-lg transition-all duration-300">
-                  <img 
-                    src={cert.image} 
+                  <img
+                    src={cert.image}
                     alt={`${cert.name} Certificate`}
                     className="w-full h-full object-cover"
                   />
@@ -86,7 +86,7 @@ const Certifications = () => {
                 <p className="text-electric-blue font-semibold text-sm mb-2">{cert.issuer}</p>
                 <p className="text-xs text-secondary-dark mb-3">{cert.year}</p>
                 <p className="text-sm text-primary-dark mb-4">{cert.description}</p>
-                
+
                 <div className="space-y-2 mb-4">
                   <p className="text-xs font-semibold text-electric-blue">Key Skills:</p>
                   <div className="flex flex-wrap gap-1 justify-center">
@@ -116,6 +116,29 @@ const Certifications = () => {
               </motion.div>
             ))}
           </div>
+        </motion.div>
+
+        {/* View Full Profile Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <motion.a
+            href="https://www.credly.com/users/dulitha-wickramasinghe/badges#credly"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 bg-terminal-green/10 border border-terminal-green text-terminal-green px-6 py-3 rounded-full hover:bg-terminal-green hover:text-background-dark transition-all duration-300 shadow-cyber hover:shadow-cyber-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="font-cyber font-bold">View Full Credly Profile</span>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </motion.a>
         </motion.div>
       </div>
     </section>
