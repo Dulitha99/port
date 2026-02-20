@@ -1,6 +1,10 @@
 # Netlify Identity redirects
 /admin/*  /admin/index.html  200
 
+# Static files - serve directly
+/sitemap.xml   /sitemap.xml   200
+/robots.txt    /robots.txt    200
+
 # SPA fallback
 /*    /index.html   200
 
