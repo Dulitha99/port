@@ -12,9 +12,9 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = "Dulitha Wickramasinghe - Expert Cybersecurity Analyst & Penetration Tester",
-  description = "Experienced cybersecurity professional specializing in SOC operations, threat hunting, and penetration testing. Certified in IBM Cybersecurity, TryHackMe, and Fortinet NSE1. Expert in Palo Alto Cortex XDR, vulnerability assessment, and security awareness training. Available for cybersecurity consulting and remote security services.",
-  keywords = "cybersecurity analyst, SOC operations specialist, threat hunter, penetration tester, cybersecurity consultant, security analyst, incident response, vulnerability assessment, Palo Alto Cortex XDR, Entra ID, network security, endpoint security, security awareness training, cybersecurity certifications, IBM cybersecurity, TryHackMe, Fortinet NSE1, security monitoring, risk assessment, firewall management, threat prevention, security architecture, cybersecurity portfolio, security professional, cyber defense, security consultant, remote cybersecurity, Sri Lanka cybersecurity expert, cybersecurity services, security assessment, penetration testing services, threat detection, security operations center, cyber threat intelligence, security compliance, cybersecurity training, security audit, cyber risk management, information security, cybersecurity career, security engineer, cyber analyst, security specialist, cybersecurity expert, digital security, cyber protection, security solutions, cybersecurity professional services",
+  title = "Dulitha Wickramasinghe | Cybersecurity Analyst & Penetration Tester",
+  description = "Dulitha Wickramasinghe is an experienced cybersecurity analyst and penetration tester from Sri Lanka, specializing in SOC operations, threat hunting, and vulnerability assessment. SLIIT graduate certified in IBM Cybersecurity, TryHackMe, and Fortinet NSE1. Expert in Palo Alto Cortex XDR, endpoint security, and security awareness training.",
+  keywords = "Dulitha Wickramasinghe, dulitha wickramasinghe, Dulitha Cyber, cybersecurity analyst, penetration tester, SOC operations specialist, threat hunter, cybersecurity consultant, Sri Lanka cybersecurity, SLIIT cybersecurity, IBM cybersecurity, TryHackMe, Fortinet NSE1, Palo Alto Cortex XDR, vulnerability assessment, incident response, network security, endpoint security, security awareness training, cybersecurity portfolio, cybersecurity certifications, security monitoring, cyber defense, penetration testing services, threat detection, cybersecurity expert",
   image = "https://dulitha.silentwatch.me/og-image.jpg",
   url = "https://dulitha.silentwatch.me/",
   type = "website"
@@ -42,7 +42,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:site_name" content="Dulitha Wickramasinghe Portfolio" />
+      <meta property="og:site_name" content="Dulitha Wickramasinghe - Cybersecurity Portfolio" />
       <meta property="og:locale" content="en_US" />
 
       {/* Twitter */}
@@ -73,7 +73,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="DC.description" content={description} />
       <meta name="DC.publisher" content="Dulitha Wickramasinghe" />
       <meta name="DC.contributor" content="Dulitha Wickramasinghe" />
-      <meta name="DC.date" content="2024" />
+      <meta name="DC.date" content="2026" />
       <meta name="DC.type" content="Text" />
       <meta name="DC.format" content="text/html" />
       <meta name="DC.identifier" content={url} />
@@ -114,7 +114,9 @@ const SEO: React.FC<SEOProps> = ({
           "@context": "https://schema.org",
           "@type": "Person",
           "name": "Dulitha Wickramasinghe",
-          "alternateName": "Dulitha Cyber",
+          "alternateName": ["Dulitha Cyber", "dulitha wickramasinghe"],
+          "givenName": "Dulitha",
+          "familyName": "Wickramasinghe",
           "jobTitle": ["Cybersecurity Analyst", "Penetration Tester", "SOC Operations Specialist", "Threat Hunter"],
           "description": description,
           "url": url,
@@ -131,7 +133,8 @@ const SEO: React.FC<SEOProps> = ({
             "https://www.linkedin.com/in/dulitha-wickramasinghe-398971211/",
             "https://github.com/Dulitha99",
             "https://tryhackme.com/p/dulithawickramas",
-            "https://medium.com/@dulithawickramasinghe"
+            "https://medium.com/@dulithawickramasinghe",
+            "https://www.credly.com/users/dulitha-wickramasinghe"
           ],
           "knowsAbout": [
             "Cybersecurity",
